@@ -1,7 +1,8 @@
 import React from 'react';
+import Albums from './Albums.js';
 
 export default ({albums}) => (
-    <ul>
-        <li>test</li>
-    </ul>
+    <Albums
+        albums={albums}
+    />
 )

@@ -10,8 +10,8 @@ var stateNavigator = new StateNavigator([
 stateNavigator.states.catalog.navigated = (data) => {
     ReactDOM.render(
         <Catalog
-            albums={data.albums}
-            filter={data.filter}
+            albums={ALBUMS}
+            search={data.search}
             band={data.band}
             sort={data.sort}
         />,
