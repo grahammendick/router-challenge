@@ -16,6 +16,10 @@ const Albums = ({albums, search, band, sort, stateNavigator}) => {
                         navigationData={{id: album.id, side: null}}
                         includeCurrentData={true}
                         stateNavigator={stateNavigator}>
+                        <img
+                            src={'../../sleeves/' + album.sleeve}
+                            alt={album.title}
+                        />
                         {album.title}
                     </RefreshLink>
                 </li>

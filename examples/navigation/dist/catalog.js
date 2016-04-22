@@ -20899,6 +20899,10 @@ var Albums = function Albums(_ref) {
                         navigationData: { id: album.id, side: null },
                         includeCurrentData: true,
                         stateNavigator: stateNavigator },
+                    _react2.default.createElement('img', {
+                        src: '../../sleeves/' + album.sleeve,
+                        alt: album.title
+                    }),
                     album.title
                 )
             );
