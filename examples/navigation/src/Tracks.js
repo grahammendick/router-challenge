@@ -1,13 +1,30 @@
 import React from 'react';
+import {RefreshLink} from 'navigation-react';
 
-export default ({albums, id}) => {
+export default ({albums, id, side, stateNavigator}) => {
     if (!id)
         return <p>None</p>;
     var album = albums.filter((album) => (
         album.id === id
     ))[0];
-    var tracks = album.side1.map((track) => (
+    var tracks = album['side' + side].map((track) => (
         <li>{track}</li>
     ))
-    return <ul>{tracks}</ul>;
+    return (
+        <div>
+            <RefreshLink
+                navigationData={{side: 1}}
+                includeCurrentData={true}
+                stateNavigator={stateNavigator}>
+                Side 1
+            </RefreshLink>
+            <RefreshLink
+                navigationData={{side: 2}}
+                includeCurrentData={true}
+                stateNavigator={stateNavigator}>
+                Side 2
+            </RefreshLink>
+            <ul>{tracks}</ul>
+        </div>
+    );
 }

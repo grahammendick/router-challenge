@@ -20917,6 +20917,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (_ref) {
     var albums = _ref.albums;
     var id = _ref.id;
+    var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
@@ -20928,6 +20929,7 @@ exports.default = function (_ref) {
         _react2.default.createElement(_Tracks2.default, {
             albums: albums,
             id: id,
+            side: side,
             stateNavigator: stateNavigator
         })
     );
@@ -20944,11 +20946,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _navigationReact = require('navigation-react');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (_ref) {
     var albums = _ref.albums;
     var id = _ref.id;
+    var side = _ref.side;
+    var stateNavigator = _ref.stateNavigator;
 
     if (!id) return _react2.default.createElement(
         'p',
@@ -20958,7 +20964,7 @@ exports.default = function (_ref) {
     var album = albums.filter(function (album) {
         return album.id === id;
     })[0];
-    var tracks = album.side1.map(function (track) {
+    var tracks = album['side' + side].map(function (track) {
         return _react2.default.createElement(
             'li',
             null,
@@ -20966,13 +20972,33 @@ exports.default = function (_ref) {
         );
     });
     return _react2.default.createElement(
-        'ul',
+        'div',
         null,
-        tracks
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { side: 1 },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'Side 1'
+        ),
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { side: 2 },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'Side 2'
+        ),
+        _react2.default.createElement(
+            'ul',
+            null,
+            tracks
+        )
     );
 };
 
-},{"react":193}],197:[function(require,module,exports){
+},{"navigation-react":7,"react":193}],197:[function(require,module,exports){
 'use strict';
 
 var _navigation = require('navigation');
@@ -20991,7 +21017,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '' }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { side: 1 } }]);
 
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
@@ -21000,6 +21026,7 @@ stateNavigator.states.catalog.navigated = function (data) {
         band: data.band,
         sort: data.sort,
         id: data.id,
+        side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
 };
