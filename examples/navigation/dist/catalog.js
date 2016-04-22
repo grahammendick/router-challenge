@@ -21035,6 +21035,8 @@ var _navigationReact = require('navigation-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var sides = [{ key: '1', name: 'Side One' }, { key: '2', name: 'Side Two' }];
+
 var Tracks = function Tracks(_ref) {
     var albums = _ref.albums;
     var id = _ref.id;
@@ -21059,22 +21061,18 @@ var Tracks = function Tracks(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { side: 1 },
-                includeCurrentData: true,
-                stateNavigator: stateNavigator },
-            'Side One'
-        ),
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { side: 2 },
-                includeCurrentData: true,
-                stateNavigator: stateNavigator },
-            'Side Two'
-        ),
+        sides.map(function (side) {
+            return _react2.default.createElement(
+                _navigationReact.RefreshLink,
+                {
+                    key: side.key,
+                    navigationData: { side: side.key },
+                    includeCurrentData: true,
+                    historyAction: 'replace',
+                    stateNavigator: stateNavigator },
+                side.name
+            );
+        }),
         _react2.default.createElement(
             'ul',
             null,
@@ -21104,7 +21102,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
-    defaults: { band: 'all', side: 1, sort: 'earliest' },
+    defaults: { band: 'all', side: '1', sort: 'earliest' },
     defaultTypes: { id: 'number' } }]);
 
 var timeout;

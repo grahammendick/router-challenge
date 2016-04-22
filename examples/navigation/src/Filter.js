@@ -5,7 +5,7 @@ var bands = [
     {key: 'all', name: 'All'},
     {key: 'beatles', name: 'The Beatles'},
     {key: 'stones', name: 'The Rolling Stones'},
-]
+];
 
 var Filter = ({search, sort, stateNavigator}) => {
     var newSort = sort !== 'earliest' ? 'earliest' : 'latest';

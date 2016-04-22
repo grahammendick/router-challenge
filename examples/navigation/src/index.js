@@ -5,7 +5,7 @@ import Catalog from './Catalog.js';
 
 var stateNavigator = new StateNavigator([
     {key: 'catalog', route: '{band?}+/from/{sort}', 
-        defaults: {band: 'all', side: 1, sort: 'earliest'}, 
+        defaults: {band: 'all', side: '1', sort: 'earliest'}, 
         defaultTypes: {id: 'number'}}
 ]);
 
