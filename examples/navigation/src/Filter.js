@@ -3,17 +3,16 @@ import {RefreshLink} from 'navigation-react';
 import {EARLIEST, LATEST, BANDS} from './constants.js';
 
 const Filter = ({search, sort, stateNavigator}) => {
-    const newSort = sort !== EARLIEST ? EARLIEST : LATEST;
-    const handleSearch = val => {
-        var data = {search: val};
-        data = stateNavigator.stateContext.includeCurrentData(data);
-        stateNavigator.refresh(data, 'none');
-    }
     return (
         <div>
             <input
                 value={search}
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={e => {
+                    var data = {search: e.target.value};
+                    const stateContext = stateNavigator.stateContext; 
+                    data = stateContext.includeCurrentData(data);
+                    stateNavigator.refresh(data, 'none');
+                }}
             />
             {BANDS.map(band => 
                 <RefreshLink
@@ -25,7 +24,7 @@ const Filter = ({search, sort, stateNavigator}) => {
                 </RefreshLink>
             )}
             <RefreshLink
-                navigationData={{sort: newSort}}
+                navigationData={{sort: sort !== EARLIEST ? EARLIEST : LATEST}}
                 includeCurrentData={true}
                 stateNavigator={stateNavigator}>
                 Year

@@ -20986,19 +20986,16 @@ var Filter = function Filter(_ref) {
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var newSort = sort !== _constants.EARLIEST ? _constants.EARLIEST : _constants.LATEST;
-    var handleSearch = function handleSearch(val) {
-        var data = { search: val };
-        data = stateNavigator.stateContext.includeCurrentData(data);
-        stateNavigator.refresh(data, 'none');
-    };
     return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement('input', {
             value: search,
             onChange: function onChange(e) {
-                return handleSearch(e.target.value);
+                var data = { search: e.target.value };
+                var stateContext = stateNavigator.stateContext;
+                data = stateContext.includeCurrentData(data);
+                stateNavigator.refresh(data, 'none');
             }
         }),
         _constants.BANDS.map(function (band) {
@@ -21015,7 +21012,7 @@ var Filter = function Filter(_ref) {
         _react2.default.createElement(
             _navigationReact.RefreshLink,
             {
-                navigationData: { sort: newSort },
+                navigationData: { sort: sort !== _constants.EARLIEST ? _constants.EARLIEST : _constants.LATEST },
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
             'Year'
