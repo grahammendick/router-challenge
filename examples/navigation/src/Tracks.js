@@ -14,13 +14,13 @@ var Tracks = ({albums, id, side, stateNavigator}) => {
                 navigationData={{side: 1}}
                 includeCurrentData={true}
                 stateNavigator={stateNavigator}>
-                Side 1
+                Side One
             </RefreshLink>
             <RefreshLink
                 navigationData={{side: 2}}
                 includeCurrentData={true}
                 stateNavigator={stateNavigator}>
-                Side 2
+                Side Two
             </RefreshLink>
             <ul>{tracks}</ul>
         </div>

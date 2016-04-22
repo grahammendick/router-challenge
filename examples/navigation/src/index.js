@@ -11,7 +11,7 @@ stateNavigator.states.catalog.navigated = (data) => {
     ReactDOM.render(
         <Catalog
             albums={ALBUMS}
-            search={data.search}
+            search={data.search || ''}
             band={data.band}
             sort={data.sort}
             id={data.id}

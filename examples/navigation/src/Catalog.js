@@ -3,11 +3,15 @@ import Filter from './Filter.js';
 import Albums from './Albums.js';
 import Tracks from './Tracks.js';
 
-var Catalog = ({albums, band, sort, id, side, stateNavigator}) => (
+var Catalog = ({albums, search, band, sort, id, side, stateNavigator}) => (
     <div>
-        <Filter sort={sort} stateNavigator={stateNavigator} />
+        <Filter
+            search={search}
+            sort={sort}
+            stateNavigator={stateNavigator} />
         <Albums
             albums={albums}
+            search={search}
             band={band}
             sort={sort}
             stateNavigator={stateNavigator}

@@ -20871,6 +20871,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Albums = function Albums(_ref) {
     var albums = _ref.albums;
+    var search = _ref.search;
     var band = _ref.band;
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
@@ -20879,7 +20880,7 @@ var Albums = function Albums(_ref) {
     var items = albums.sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     }).filter(function (album) {
-        return band === 'all' || album.band.toLowerCase().indexOf(band) !== -1;
+        return (!search || album.title.indexOf(search) !== -1) && (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1);
     }).map(function (album) {
         return _react2.default.createElement(
             'li',
@@ -20929,6 +20930,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
+    var search = _ref.search;
     var band = _ref.band;
     var sort = _ref.sort;
     var id = _ref.id;
@@ -20937,9 +20939,13 @@ var Catalog = function Catalog(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Filter2.default, { sort: sort, stateNavigator: stateNavigator }),
+        _react2.default.createElement(_Filter2.default, {
+            search: search,
+            sort: sort,
+            stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
+            search: search,
             band: band,
             sort: sort,
             stateNavigator: stateNavigator
@@ -20970,13 +20976,25 @@ var _navigationReact = require('navigation-react');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
+    var search = _ref.search;
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
     var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
+    var handleSearch = function handleSearch(val) {
+        var data = { search: val };
+        data = stateNavigator.stateContext.includeCurrentData(data);
+        stateNavigator.refresh(data, 'none');
+    };
     return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement('input', {
+            value: search,
+            onChange: function onChange(e) {
+                return handleSearch(e.target.value);
+            }
+        }),
         _react2.default.createElement(
             _navigationReact.RefreshLink,
             {
@@ -21058,7 +21076,7 @@ var Tracks = function Tracks(_ref) {
                 navigationData: { side: 1 },
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
-            'Side 1'
+            'Side One'
         ),
         _react2.default.createElement(
             _navigationReact.RefreshLink,
@@ -21066,7 +21084,7 @@ var Tracks = function Tracks(_ref) {
                 navigationData: { side: 2 },
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
-            'Side 2'
+            'Side Two'
         ),
         _react2.default.createElement(
             'ul',
@@ -21101,7 +21119,7 @@ var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
-        search: data.search,
+        search: data.search || '',
         band: data.band,
         sort: data.sort,
         id: data.id,
