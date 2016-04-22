@@ -20880,7 +20880,9 @@ var Albums = function Albums(_ref) {
 
     var mult = sort === _constants.EARLIEST ? 1 : -1;
     albums = albums.filter(function (album) {
-        return (!search || album.title.indexOf(search) !== -1) && (band === _constants.ALL || album.band.toLowerCase().indexOf(band) !== -1);
+        return !search || album.title.indexOf(search) !== -1;
+    }).filter(function (album) {
+        return band === _constants.ALL || album.band === band;
     }).sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     });

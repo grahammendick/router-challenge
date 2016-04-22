@@ -5,10 +5,8 @@ import {ALL, EARLIEST} from './constants.js';
 const Albums = ({albums, search, band, sort, stateNavigator}) => {
     const mult = sort === EARLIEST ? 1 : -1;
     albums = albums
-        .filter(album => 
-            (!search || album.title.indexOf(search) !== -1) &&
-            (band === ALL || album.band.toLowerCase().indexOf(band) !== -1)
-        )
+        .filter(album => !search || album.title.indexOf(search) !== -1)
+        .filter(album =>  band === ALL || album.band === band)
         .sort((albumA, albumB) => (albumA.year - albumB.year) * mult);
     return (
         <ul>
