@@ -20975,6 +20975,8 @@ var _navigationReact = require('navigation-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var bands = [{ key: 'all', name: 'All' }, { key: 'beatles', name: 'The Beatles' }, { key: 'stones', name: 'The Rolling Stones' }];
+
 var Filter = function Filter(_ref) {
     var search = _ref.search;
     var sort = _ref.sort;
@@ -20995,30 +20997,17 @@ var Filter = function Filter(_ref) {
                 return handleSearch(e.target.value);
             }
         }),
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { band: 'all' },
-                includeCurrentData: true,
-                stateNavigator: stateNavigator },
-            'All'
-        ),
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { band: 'beatles' },
-                includeCurrentData: true,
-                stateNavigator: stateNavigator },
-            'The Beatles'
-        ),
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { band: 'stones' },
-                includeCurrentData: true,
-                stateNavigator: stateNavigator },
-            'The Rolling Stones'
-        ),
+        bands.map(function (band) {
+            return _react2.default.createElement(
+                _navigationReact.RefreshLink,
+                {
+                    key: band.key,
+                    navigationData: { band: band.key },
+                    includeCurrentData: true,
+                    stateNavigator: stateNavigator },
+                band.name
+            );
+        }),
         _react2.default.createElement(
             _navigationReact.RefreshLink,
             {
