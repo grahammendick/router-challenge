@@ -21127,7 +21127,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
     defaults: { band: _constants.ALL, side: '1', sort: _constants.EARLIEST },
-    defaultTypes: { id: 'number' } }]);
+    defaultTypes: { id: 'number' }, trackTypes: false }]);
 
 var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
@@ -21147,6 +21147,16 @@ stateNavigator.states.catalog.navigated = function (data) {
             stateNavigator.navigateLink(stateNavigator.stateContext.url);
         }
     }, 1000);
+};
+
+stateNavigator.states.catalog.urlEncode = function (state, key, val) {
+    val = encodeURIComponent(val);
+    return key !== 'search' ? val : val.replace(/%20/g, '+');
+};
+
+stateNavigator.states.catalog.urlDecode = function (state, key, val) {
+    val = decodeURIComponent(val);
+    return key !== 'search' ? val : val.replace(/\+/g, ' ');
 };
 
 stateNavigator.start();
