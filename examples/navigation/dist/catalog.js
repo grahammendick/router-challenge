@@ -21103,7 +21103,9 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}', defaults: { band: 'all', side: 1, sort: 'earliest' }, defaultTypes: { id: 'number' } }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
+    defaults: { band: 'all', side: 1, sort: 'earliest' },
+    defaultTypes: { id: 'number' } }]);
 
 var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
@@ -21118,7 +21120,8 @@ stateNavigator.states.catalog.navigated = function (data) {
     }), document.getElementById('catalog'));
     clearTimeout(timeout);
     timeout = setTimeout(function () {
-        if (stateNavigator.historyManager.getCurrentUrl() !== stateNavigator.stateContext.url) {
+        var currentUrl = stateNavigator.historyManager.getCurrentUrl();
+        if (currentUrl !== stateNavigator.stateContext.url) {
             stateNavigator.navigateLink(stateNavigator.stateContext.url);
         }
     }, 1000);

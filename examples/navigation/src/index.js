@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import Catalog from './Catalog.js';
 
 var stateNavigator = new StateNavigator([
-    {key: 'catalog', route: '{band?}+/from/{sort}', defaults: {band: 'all', side: 1, sort: 'earliest'}, defaultTypes: {id: 'number'}}
+    {key: 'catalog', route: '{band?}+/from/{sort}', 
+        defaults: {band: 'all', side: 1, sort: 'earliest'}, 
+        defaultTypes: {id: 'number'}}
 ]);
 
 var timeout;
@@ -23,7 +25,8 @@ stateNavigator.states.catalog.navigated = (data) => {
     );
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-        if (stateNavigator.historyManager.getCurrentUrl() !== stateNavigator.stateContext.url) {
+        var currentUrl = stateNavigator.historyManager.getCurrentUrl();
+        if (currentUrl !== stateNavigator.stateContext.url) {
             stateNavigator.navigateLink(stateNavigator.stateContext.url);
         }
     }, 1000);
