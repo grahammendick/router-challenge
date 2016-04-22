@@ -20876,11 +20876,12 @@ exports.default = function (_ref) {
     var items = albums.map(function (album) {
         return _react2.default.createElement(
             'li',
-            null,
+            { key: album.id },
             _react2.default.createElement(
                 _navigationReact.RefreshLink,
                 {
-                    navigationData: { id: album.id },
+                    navigationData: { id: album.id, side: null },
+                    includeCurrentData: true,
                     stateNavigator: stateNavigator },
                 album.title
             )
@@ -20964,10 +20965,10 @@ exports.default = function (_ref) {
     var album = albums.filter(function (album) {
         return album.id === id;
     })[0];
-    var tracks = album['side' + side].map(function (track) {
+    var tracks = album['side' + side].map(function (track, i) {
         return _react2.default.createElement(
             'li',
-            null,
+            { key: i },
             track
         );
     });

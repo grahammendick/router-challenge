@@ -3,9 +3,10 @@ import {RefreshLink} from 'navigation-react';
 
 export default ({albums, stateNavigator}) => {
     var items = albums.map((album) => (
-        <li>
+        <li key={album.id}>
             <RefreshLink
-                navigationData={{id: album.id}}
+                navigationData={{id: album.id, side: null}}
+                includeCurrentData={true}
                 stateNavigator={stateNavigator}>
                 {album.title}
             </RefreshLink>

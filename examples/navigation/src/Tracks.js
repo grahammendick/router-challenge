@@ -5,8 +5,8 @@ export default ({albums, id, side, stateNavigator}) => {
     if (!id)
         return <p>None</p>;
     var album = albums.filter((album) => album.id === id)[0];
-    var tracks = album['side' + side].map((track) => (
-        <li>{track}</li>
+    var tracks = album['side' + side].map((track, i) => (
+        <li key={i}>{track}</li>
     ))
     return (
         <div>
