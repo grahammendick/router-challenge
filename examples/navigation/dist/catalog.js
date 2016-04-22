@@ -20877,28 +20877,28 @@ var Albums = function Albums(_ref) {
     var stateNavigator = _ref.stateNavigator;
 
     var mult = sort === 'earliest' ? 1 : -1;
-    var items = albums.filter(function (album) {
+    albums = albums.filter(function (album) {
         return (!search || album.title.indexOf(search) !== -1) && (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1);
     }).sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
-    }).map(function (album) {
-        return _react2.default.createElement(
-            'li',
-            { key: album.id },
-            _react2.default.createElement(
-                _navigationReact.RefreshLink,
-                {
-                    navigationData: { id: album.id, side: null },
-                    includeCurrentData: true,
-                    stateNavigator: stateNavigator },
-                album.title
-            )
-        );
     });
     return _react2.default.createElement(
         'ul',
         null,
-        items
+        albums.map(function (album) {
+            return _react2.default.createElement(
+                'li',
+                { key: album.id },
+                _react2.default.createElement(
+                    _navigationReact.RefreshLink,
+                    {
+                        navigationData: { id: album.id, side: null },
+                        includeCurrentData: true,
+                        stateNavigator: stateNavigator },
+                    album.title
+                )
+            );
+        })
     );
 };
 exports.default = Albums;
@@ -21051,13 +21051,7 @@ var Tracks = function Tracks(_ref) {
     var album = albums.filter(function (album) {
         return album.id === id;
     })[0];
-    var tracks = album['side' + side].map(function (track, i) {
-        return _react2.default.createElement(
-            'li',
-            { key: i },
-            track
-        );
-    });
+    var tracks = album['side' + side];
     return _react2.default.createElement(
         'div',
         null,
@@ -21074,9 +21068,20 @@ var Tracks = function Tracks(_ref) {
             );
         }),
         _react2.default.createElement(
+            'h2',
+            null,
+            album.title
+        ),
+        _react2.default.createElement(
             'ul',
             null,
-            tracks
+            tracks.map(function (track) {
+                return _react2.default.createElement(
+                    'li',
+                    { key: track },
+                    track
+                );
+            })
         )
     );
 };

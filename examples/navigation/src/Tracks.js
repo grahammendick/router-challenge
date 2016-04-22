@@ -10,9 +10,7 @@ var Tracks = ({albums, id, side, stateNavigator}) => {
     if (!id)
         return <p>None</p>;
     var album = albums.filter((album) => album.id === id)[0];
-    var tracks = album['side' + side].map((track, i) => (
-        <li key={i}>{track}</li>
-    ))
+    var tracks = album['side' + side];
     return (
         <div>
             {sides.map(side => 
@@ -25,7 +23,12 @@ var Tracks = ({albums, id, side, stateNavigator}) => {
                     {side.name}
                 </RefreshLink>
             )}
-            <ul>{tracks}</ul>
+            <h2>{album.title}</h2>
+            <ul>
+                {tracks.map(track => 
+                    <li key={track}>{track}</li>
+                )}
+            </ul>
         </div>
     );
 }
