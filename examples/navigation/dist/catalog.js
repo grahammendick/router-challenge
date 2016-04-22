@@ -21116,6 +21116,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}', defaults: { band: 'all', side: 1, sort: 'earliest' }, defaultTypes: { id: 'number' } }]);
 
+var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
@@ -21126,6 +21127,12 @@ stateNavigator.states.catalog.navigated = function (data) {
         side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+        if (stateNavigator.historyManager.getCurrentUrl() !== stateNavigator.stateContext.url) {
+            stateNavigator.navigateLink(stateNavigator.stateContext.url);
+        }
+    }, 1000);
 };
 
 stateNavigator.start();

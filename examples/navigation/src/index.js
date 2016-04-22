@@ -7,6 +7,7 @@ var stateNavigator = new StateNavigator([
     {key: 'catalog', route: '{band?}+/from/{sort}', defaults: {band: 'all', side: 1, sort: 'earliest'}, defaultTypes: {id: 'number'}}
 ]);
 
+var timeout;
 stateNavigator.states.catalog.navigated = (data) => {
     ReactDOM.render(
         <Catalog
@@ -20,6 +21,12 @@ stateNavigator.states.catalog.navigated = (data) => {
         />,
         document.getElementById('catalog')
     );
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        if (stateNavigator.historyManager.getCurrentUrl() !== stateNavigator.stateContext.url) {
+            stateNavigator.navigateLink(stateNavigator.stateContext.url);
+        }
+    }, 1000);
 }
 
 stateNavigator.start();
