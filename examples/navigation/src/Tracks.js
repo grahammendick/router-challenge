@@ -1,10 +1,6 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
-
-const sides = [
-    {key: '1', name: 'Side One'},
-    {key: '2', name: 'Side Two'}
-];
+import {SIDES} from './constants.js';
 
 const Tracks = ({albums, id, side, stateNavigator}) => {
     if (!id)
@@ -13,7 +9,7 @@ const Tracks = ({albums, id, side, stateNavigator}) => {
     const tracks = album['side' + side];
     return (
         <div>
-            {sides.map(side => 
+            {SIDES.map(side => 
                 <RefreshLink
                     key={side.key}
                     navigationData={{side: side.key}}

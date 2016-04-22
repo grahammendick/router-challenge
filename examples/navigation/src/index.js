@@ -2,10 +2,11 @@ import {StateNavigator} from 'navigation';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Catalog from './Catalog.js';
+import {ALL, EARLIEST} from './constants.js';
 
 const stateNavigator = new StateNavigator([
     {key: 'catalog', route: '{band?}+/from/{sort}', 
-        defaults: {band: 'all', side: '1', sort: 'earliest'}, 
+        defaults: {band: ALL, side: '1', sort: EARLIEST}, 
         defaultTypes: {id: 'number'}}
 ]);
 

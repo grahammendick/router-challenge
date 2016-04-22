@@ -20867,6 +20867,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
+var _constants = require('./constants.js');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Albums = function Albums(_ref) {
@@ -20876,9 +20878,9 @@ var Albums = function Albums(_ref) {
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var mult = sort === 'earliest' ? 1 : -1;
+    var mult = sort === _constants.EARLIEST ? 1 : -1;
     albums = albums.filter(function (album) {
-        return (!search || album.title.indexOf(search) !== -1) && (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1);
+        return (!search || album.title.indexOf(search) !== -1) && (band === _constants.ALL || album.band.toLowerCase().indexOf(band) !== -1);
     }).sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     });
@@ -20903,7 +20905,7 @@ var Albums = function Albums(_ref) {
 };
 exports.default = Albums;
 
-},{"navigation-react":7,"react":193}],195:[function(require,module,exports){
+},{"./constants.js":198,"navigation-react":7,"react":193}],195:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20973,16 +20975,16 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _constants = require('./constants.js');
 
-var bands = [{ key: 'all', name: 'All' }, { key: 'beatles', name: 'The Beatles' }, { key: 'stones', name: 'The Rolling Stones' }];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
     var search = _ref.search;
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
+    var newSort = sort !== _constants.EARLIEST ? _constants.EARLIEST : _constants.LATEST;
     var handleSearch = function handleSearch(val) {
         var data = { search: val };
         data = stateNavigator.stateContext.includeCurrentData(data);
@@ -20997,7 +20999,7 @@ var Filter = function Filter(_ref) {
                 return handleSearch(e.target.value);
             }
         }),
-        bands.map(function (band) {
+        _constants.BANDS.map(function (band) {
             return _react2.default.createElement(
                 _navigationReact.RefreshLink,
                 {
@@ -21020,7 +21022,7 @@ var Filter = function Filter(_ref) {
 };
 exports.default = Filter;
 
-},{"navigation-react":7,"react":193}],197:[function(require,module,exports){
+},{"./constants.js":198,"navigation-react":7,"react":193}],197:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21033,9 +21035,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _constants = require('./constants.js');
 
-var sides = [{ key: '1', name: 'Side One' }, { key: '2', name: 'Side Two' }];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tracks = function Tracks(_ref) {
     var albums = _ref.albums;
@@ -21055,7 +21057,7 @@ var Tracks = function Tracks(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        sides.map(function (side) {
+        _constants.SIDES.map(function (side) {
             return _react2.default.createElement(
                 _navigationReact.RefreshLink,
                 {
@@ -21087,7 +21089,19 @@ var Tracks = function Tracks(_ref) {
 };
 exports.default = Tracks;
 
-},{"navigation-react":7,"react":193}],198:[function(require,module,exports){
+},{"./constants.js":198,"navigation-react":7,"react":193}],198:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var ALL = exports.ALL = 'all';
+var EARLIEST = exports.EARLIEST = 'earliest';
+var LATEST = exports.LATEST = 'latest';
+var BANDS = exports.BANDS = [{ key: ALL, name: 'All' }, { key: 'beatles', name: 'The Beatles' }, { key: 'stones', name: 'The Rolling Stones' }];
+var SIDES = exports.SIDES = [{ key: '1', name: 'Side One' }, { key: '2', name: 'Side Two' }];
+
+},{}],199:[function(require,module,exports){
 'use strict';
 
 var _navigation = require('navigation');
@@ -21104,10 +21118,12 @@ var _Catalog = require('./Catalog.js');
 
 var _Catalog2 = _interopRequireDefault(_Catalog);
 
+var _constants = require('./constants.js');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
-    defaults: { band: 'all', side: '1', sort: 'earliest' },
+    defaults: { band: _constants.ALL, side: '1', sort: _constants.EARLIEST },
     defaultTypes: { id: 'number' } }]);
 
 var timeout;
@@ -21132,4 +21148,4 @@ stateNavigator.states.catalog.navigated = function (data) {
 
 stateNavigator.start();
 
-},{"./Catalog.js":195,"navigation":29,"react":193,"react-dom":30}]},{},[198]);
+},{"./Catalog.js":195,"./constants.js":198,"navigation":29,"react":193,"react-dom":30}]},{},[199]);
