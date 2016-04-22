@@ -1,7 +1,8 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-var Filter = ({stateNavigator}) => {
+var Filter = ({sort, stateNavigator}) => {
+    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
     return (
         <div>
             <RefreshLink
@@ -21,6 +22,12 @@ var Filter = ({stateNavigator}) => {
                 includeCurrentData={true}
                 stateNavigator={stateNavigator}>
                 The Rolling Stones
+            </RefreshLink>
+            <RefreshLink
+                navigationData={{sort: newSort}}
+                includeCurrentData={true}
+                stateNavigator={stateNavigator}>
+                Year
             </RefreshLink>
         </div>
     );

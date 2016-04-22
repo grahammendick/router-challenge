@@ -20872,9 +20872,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Albums = function Albums(_ref) {
     var albums = _ref.albums;
     var band = _ref.band;
+    var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var items = albums.filter(function (album) {
+    var mult = sort === 'earliest' ? 1 : -1;
+    var items = albums.sort(function (albumA, albumB) {
+        return (albumA.year - albumB.year) * mult;
+    }).filter(function (album) {
         if (band === 'all') return true;
         return album.band.toLowerCase().indexOf(band.toLowerCase()) !== -1;
     }).map(function (album) {
@@ -20927,16 +20931,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
     var band = _ref.band;
+    var sort = _ref.sort;
     var id = _ref.id;
     var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Filter2.default, { stateNavigator: stateNavigator }),
+        _react2.default.createElement(_Filter2.default, { sort: sort, stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             band: band,
+            sort: sort,
             stateNavigator: stateNavigator
         }),
         _react2.default.createElement(_Tracks2.default, {
@@ -20965,8 +20971,10 @@ var _navigationReact = require('navigation-react');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
+    var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
+    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
     return _react2.default.createElement(
         'div',
         null,
@@ -20993,6 +21001,14 @@ var Filter = function Filter(_ref) {
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
             'The Rolling Stones'
+        ),
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { sort: newSort },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'Year'
         )
     );
 };
@@ -21081,7 +21097,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { band: 'all', side: 1 }, defaultTypes: { id: 'number' } }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { band: 'all', side: 1, sort: 'earliest' }, defaultTypes: { id: 'number' } }]);
 
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
