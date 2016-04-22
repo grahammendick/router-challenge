@@ -20879,8 +20879,7 @@ var Albums = function Albums(_ref) {
     var items = albums.sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     }).filter(function (album) {
-        if (band === 'all') return true;
-        return album.band.toLowerCase().indexOf(band.toLowerCase()) !== -1;
+        return band === 'all' || album.band.toLowerCase().indexOf(band) !== -1;
     }).map(function (album) {
         return _react2.default.createElement(
             'li',
