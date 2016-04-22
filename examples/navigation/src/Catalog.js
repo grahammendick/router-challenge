@@ -1,11 +1,14 @@
 import React from 'react';
+import Filter from './Filter.js';
 import Albums from './Albums.js';
 import Tracks from './Tracks.js';
 
-export default ({albums, id, side, stateNavigator}) => (
+var Catalog = ({albums, band, id, side, stateNavigator}) => (
     <div>
+        <Filter stateNavigator={stateNavigator} />
         <Albums
             albums={albums}
+            band={band}
             stateNavigator={stateNavigator}
         />
         <Tracks
@@ -16,3 +19,4 @@ export default ({albums, id, side, stateNavigator}) => (
         />
     </div>
 )
+export default Catalog;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-export default ({albums, id, side, stateNavigator}) => {
+var Tracks = ({albums, id, side, stateNavigator}) => {
     if (!id)
         return <p>None</p>;
     var album = albums.filter((album) => album.id === id)[0];
@@ -26,3 +26,4 @@ export default ({albums, id, side, stateNavigator}) => {
         </div>
     );
 }
+export default Tracks;

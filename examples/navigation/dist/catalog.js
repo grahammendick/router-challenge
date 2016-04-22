@@ -20869,11 +20869,15 @@ var _navigationReact = require('navigation-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (_ref) {
+var Albums = function Albums(_ref) {
     var albums = _ref.albums;
+    var band = _ref.band;
     var stateNavigator = _ref.stateNavigator;
 
-    var items = albums.map(function (album) {
+    var items = albums.filter(function (album) {
+        if (band === 'all') return true;
+        return album.band.toLowerCase().indexOf(band.toLowerCase()) !== -1;
+    }).map(function (album) {
         return _react2.default.createElement(
             'li',
             { key: album.id },
@@ -20893,6 +20897,7 @@ exports.default = function (_ref) {
         items
     );
 };
+exports.default = Albums;
 
 },{"navigation-react":7,"react":193}],195:[function(require,module,exports){
 'use strict';
@@ -20905,6 +20910,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Filter = require('./Filter.js');
+
+var _Filter2 = _interopRequireDefault(_Filter);
+
 var _Albums = require('./Albums.js');
 
 var _Albums2 = _interopRequireDefault(_Albums);
@@ -20915,16 +20924,19 @@ var _Tracks2 = _interopRequireDefault(_Tracks);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (_ref) {
+var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
+    var band = _ref.band;
     var id = _ref.id;
     var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(_Filter2.default, { stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
+            band: band,
             stateNavigator: stateNavigator
         }),
         _react2.default.createElement(_Tracks2.default, {
@@ -20935,8 +20947,9 @@ exports.default = function (_ref) {
         })
     );
 };
+exports.default = Catalog;
 
-},{"./Albums.js":194,"./Tracks.js":196,"react":193}],196:[function(require,module,exports){
+},{"./Albums.js":194,"./Filter.js":196,"./Tracks.js":197,"react":193}],196:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20951,7 +20964,56 @@ var _navigationReact = require('navigation-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (_ref) {
+var Filter = function Filter(_ref) {
+    var stateNavigator = _ref.stateNavigator;
+
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { band: 'all' },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'All'
+        ),
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { band: 'beatles' },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'The Beatles'
+        ),
+        _react2.default.createElement(
+            _navigationReact.RefreshLink,
+            {
+                navigationData: { band: 'stones' },
+                includeCurrentData: true,
+                stateNavigator: stateNavigator },
+            'The Rolling Stones'
+        )
+    );
+};
+exports.default = Filter;
+
+},{"navigation-react":7,"react":193}],197:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _navigationReact = require('navigation-react');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Tracks = function Tracks(_ref) {
     var albums = _ref.albums;
     var id = _ref.id;
     var side = _ref.side;
@@ -20998,8 +21060,9 @@ exports.default = function (_ref) {
         )
     );
 };
+exports.default = Tracks;
 
-},{"navigation-react":7,"react":193}],197:[function(require,module,exports){
+},{"navigation-react":7,"react":193}],198:[function(require,module,exports){
 'use strict';
 
 var _navigation = require('navigation');
@@ -21018,7 +21081,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { side: 1 }, defaultTypes: { id: 'number' } }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { band: 'all', side: 1 }, defaultTypes: { id: 'number' } }]);
 
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
@@ -21034,4 +21097,4 @@ stateNavigator.states.catalog.navigated = function (data) {
 
 stateNavigator.start();
 
-},{"./Catalog.js":195,"navigation":29,"react":193,"react-dom":30}]},{},[197]);
+},{"./Catalog.js":195,"navigation":29,"react":193,"react-dom":30}]},{},[198]);
