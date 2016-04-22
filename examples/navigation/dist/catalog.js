@@ -20879,10 +20879,13 @@ var Albums = function Albums(_ref) {
     var stateNavigator = _ref.stateNavigator;
 
     var mult = sort === _constants.EARLIEST ? 1 : -1;
+    var bandName = _constants.BANDS.filter(function (item) {
+        return item.key === band;
+    })[0].name;
     albums = albums.filter(function (album) {
         return !search || album.title.indexOf(search) !== -1;
     }).filter(function (album) {
-        return band === _constants.ALL || album.band === band;
+        return band === _constants.ALL || album.band === bandName;
     }).sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     });
