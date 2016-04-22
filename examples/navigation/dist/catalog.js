@@ -21096,7 +21096,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { band: 'all', side: 1, sort: 'earliest' }, defaultTypes: { id: 'number' } }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}', defaults: { band: 'all', side: 1, sort: 'earliest' }, defaultTypes: { id: 'number' } }]);
 
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
