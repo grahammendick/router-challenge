@@ -20877,10 +20877,10 @@ var Albums = function Albums(_ref) {
     var stateNavigator = _ref.stateNavigator;
 
     var mult = sort === 'earliest' ? 1 : -1;
-    var items = albums.sort(function (albumA, albumB) {
-        return (albumA.year - albumB.year) * mult;
-    }).filter(function (album) {
+    var items = albums.filter(function (album) {
         return (!search || album.title.indexOf(search) !== -1) && (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1);
+    }).sort(function (albumA, albumB) {
+        return (albumA.year - albumB.year) * mult;
     }).map(function (album) {
         return _react2.default.createElement(
             'li',

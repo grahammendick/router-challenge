@@ -4,11 +4,11 @@ import {RefreshLink} from 'navigation-react';
 var Albums = ({albums, search, band, sort, stateNavigator}) => {
     var mult = sort === 'earliest' ? 1 : -1;
     var items = albums
-        .sort((albumA, albumB) => (albumA.year - albumB.year) * mult)
         .filter((album) => 
             (!search || album.title.indexOf(search) !== -1) &&
             (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1)
         )
+        .sort((albumA, albumB) => (albumA.year - albumB.year) * mult)
         .map((album) => (
             <li key={album.id}>
                 <RefreshLink
