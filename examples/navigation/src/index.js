@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Catalog from './Catalog.js';
 
 var stateNavigator = new StateNavigator([
-    {key: 'catalog', route: '', defaults: {side: 1}}
+    {key: 'catalog', route: '', defaults: {side: 1}, defaultTypes: {id: 'number'}}
 ]);
 
 stateNavigator.states.catalog.navigated = (data) => {

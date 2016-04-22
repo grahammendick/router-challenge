@@ -21017,7 +21017,7 @@ var _Catalog2 = _interopRequireDefault(_Catalog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { side: 1 } }]);
+var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '', defaults: { side: 1 }, defaultTypes: { id: 'number' } }]);
 
 stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
