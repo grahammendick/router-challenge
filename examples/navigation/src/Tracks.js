@@ -9,7 +9,7 @@ var sides = [
 var Tracks = ({albums, id, side, stateNavigator}) => {
     if (!id)
         return <p>None</p>;
-    var album = albums.filter((album) => album.id === id)[0];
+    var album = albums.filter(album => album.id === id)[0];
     var tracks = album['side' + side];
     return (
         <div>

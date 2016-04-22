@@ -9,7 +9,7 @@ var bands = [
 
 var Filter = ({search, sort, stateNavigator}) => {
     var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
-    var handleSearch = function(val) {
+    var handleSearch = val => {
         var data = {search: val};
         data = stateNavigator.stateContext.includeCurrentData(data);
         stateNavigator.refresh(data, 'none');

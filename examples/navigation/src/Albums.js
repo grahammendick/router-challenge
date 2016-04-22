@@ -4,7 +4,7 @@ import {RefreshLink} from 'navigation-react';
 var Albums = ({albums, search, band, sort, stateNavigator}) => {
     var mult = sort === 'earliest' ? 1 : -1;
     albums = albums
-        .filter((album) => 
+        .filter(album => 
             (!search || album.title.indexOf(search) !== -1) &&
             (band === 'all' || album.band.toLowerCase().indexOf(band) !== -1)
         )
