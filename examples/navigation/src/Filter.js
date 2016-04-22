@@ -1,15 +1,15 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-var bands = [
+const bands = [
     {key: 'all', name: 'All'},
     {key: 'beatles', name: 'The Beatles'},
     {key: 'stones', name: 'The Rolling Stones'},
 ];
 
-var Filter = ({search, sort, stateNavigator}) => {
-    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
-    var handleSearch = val => {
+const Filter = ({search, sort, stateNavigator}) => {
+    const newSort = sort !== 'earliest' ? 'earliest' : 'latest';
+    const handleSearch = val => {
         var data = {search: val};
         data = stateNavigator.stateContext.includeCurrentData(data);
         stateNavigator.refresh(data, 'none');

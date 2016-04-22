@@ -1,8 +1,8 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-var Albums = ({albums, search, band, sort, stateNavigator}) => {
-    var mult = sort === 'earliest' ? 1 : -1;
+const Albums = ({albums, search, band, sort, stateNavigator}) => {
+    const mult = sort === 'earliest' ? 1 : -1;
     albums = albums
         .filter(album => 
             (!search || album.title.indexOf(search) !== -1) &&
