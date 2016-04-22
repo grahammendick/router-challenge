@@ -14,6 +14,8 @@ stateNavigator.states.catalog.navigated = (data) => {
             search={data.search}
             band={data.band}
             sort={data.sort}
+            id={data.id}
+            stateNavigator={stateNavigator}
         />,
         document.getElementById('catalog')
     );
