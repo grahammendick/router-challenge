@@ -21082,7 +21082,6 @@ stateNavigator.states.catalog.navigated = function (data) {
     var album = ALBUMS.filter(function (album) {
         return album.slug === data.slug;
     })[0];
-    if (album) stateNavigator.stateContext.title = album.title;
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
@@ -21090,6 +21089,7 @@ stateNavigator.states.catalog.navigated = function (data) {
         album: album,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
+    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
     checkHistory();
 };
 
@@ -21116,7 +21116,7 @@ Object.defineProperty(exports, "__esModule", {
 var _navigation = require('navigation');
 
 exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{slug}', title: 'Catalog',
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{slug}',
         defaults: { sort: 'earliest' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
