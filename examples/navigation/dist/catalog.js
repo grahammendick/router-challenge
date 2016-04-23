@@ -20888,11 +20888,11 @@ var Albums = function Albums(_ref) {
         albums.map(function (album) {
             return _react2.default.createElement(
                 'li',
-                { key: album.id },
+                { key: album.slug },
                 _react2.default.createElement(
                     _navigationReact.RefreshLink,
                     {
-                        navigationData: { id: album.id, side: null },
+                        navigationData: { slug: album.slug },
                         includeCurrentData: true,
                         stateNavigator: stateNavigator },
                     _react2.default.createElement('img', {
@@ -21076,7 +21076,7 @@ var stateNavigator = (0, _router2.default)();
 
 stateNavigator.states.catalog.navigated = function (data) {
     var album = ALBUMS.filter(function (album) {
-        return album.id === data.id;
+        return album.slug === data.slug;
     })[0];
     if (album) stateNavigator.stateContext.title = album.title;
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
@@ -21112,9 +21112,8 @@ Object.defineProperty(exports, "__esModule", {
 var _navigation = require('navigation');
 
 exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{id}',
-        title: 'Catalog', defaults: { sort: 'earliest' },
-        defaultTypes: { id: 'number' }, trackTypes: false }]);
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{slug}', title: 'Catalog',
+        defaults: { sort: 'earliest' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
         return key !== 'search' ? val : val.replace(/%20/g, '+');

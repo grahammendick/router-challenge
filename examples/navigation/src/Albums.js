@@ -9,9 +9,9 @@ const Albums = ({albums, search, band, sort, stateNavigator}) => {
     return (
         <ul>
             {albums.map(album => 
-                <li key={album.id}>
+                <li key={album.slug}>
                     <RefreshLink
-                        navigationData={{id: album.id, side: null}}
+                        navigationData={{slug: album.slug}}
                         includeCurrentData={true}
                         stateNavigator={stateNavigator}>
                         <img

@@ -6,7 +6,7 @@ import createStateNavigator from './router.js';
 const stateNavigator = createStateNavigator();
 
 stateNavigator.states.catalog.navigated = (data) => {
-    const album = ALBUMS.filter(album => album.id === data.id)[0];
+    const album = ALBUMS.filter(album => album.slug === data.slug)[0];
     if (album)
         stateNavigator.stateContext.title = album.title;
     ReactDOM.render(
