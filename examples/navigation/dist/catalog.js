@@ -21041,8 +21041,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
-var _constants = require('./constants.js');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tracks = function Tracks(_ref) {
@@ -21059,22 +21057,9 @@ var Tracks = function Tracks(_ref) {
     var album = albums.filter(function (album) {
         return album.id === id;
     })[0];
-    var tracks = album['side' + side];
     return _react2.default.createElement(
         'div',
         null,
-        _constants.SIDES.map(function (side) {
-            return _react2.default.createElement(
-                _navigationReact.RefreshLink,
-                {
-                    key: side.key,
-                    navigationData: { side: side.key },
-                    includeCurrentData: true,
-                    historyAction: 'replace',
-                    stateNavigator: stateNavigator },
-                side.name
-            );
-        }),
         _react2.default.createElement(
             'h2',
             null,
@@ -21083,7 +21068,7 @@ var Tracks = function Tracks(_ref) {
         _react2.default.createElement(
             'ul',
             null,
-            tracks.map(function (track) {
+            album.tracks.map(function (track) {
                 return _react2.default.createElement(
                     'li',
                     { key: track },
@@ -21095,7 +21080,7 @@ var Tracks = function Tracks(_ref) {
 };
 exports.default = Tracks;
 
-},{"./constants.js":198,"navigation-react":7,"react":193}],198:[function(require,module,exports){
+},{"navigation-react":7,"react":193}],198:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21105,7 +21090,6 @@ var ALL = exports.ALL = 'all';
 var EARLIEST = exports.EARLIEST = 'earliest';
 var LATEST = exports.LATEST = 'latest';
 var BANDS = exports.BANDS = [{ key: ALL, name: 'All' }, { key: 'beatles', name: 'The Beatles' }, { key: 'stones', name: 'The Rolling Stones' }];
-var SIDES = exports.SIDES = [{ key: '1', name: 'Side One' }, { key: '2', name: 'Side Two' }];
 
 },{}],199:[function(require,module,exports){
 'use strict';
@@ -21165,7 +21149,7 @@ var _constants = require('./constants.js');
 
 exports.default = function () {
     var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
-        defaults: { band: _constants.ALL, side: '1', sort: _constants.EARLIEST },
+        defaults: { band: _constants.ALL, sort: _constants.EARLIEST },
         defaultTypes: { id: 'number' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);

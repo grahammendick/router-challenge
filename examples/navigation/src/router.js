@@ -4,7 +4,7 @@ import {ALL, EARLIEST} from './constants.js';
 export default () => {
     const stateNavigator = new StateNavigator([
         {key: 'catalog', route: '{band?}+/from/{sort}', 
-            defaults: {band: ALL, side: '1', sort: EARLIEST}, 
+            defaults: {band: ALL, sort: EARLIEST}, 
             defaultTypes: {id: 'number'}, trackTypes: false}
     ]);
     stateNavigator.states.catalog.urlEncode = (state, key, val) => {

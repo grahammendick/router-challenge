@@ -6,7 +6,3 @@ export const BANDS = [
     {key: 'beatles', name: 'The Beatles'},
     {key: 'stones', name: 'The Rolling Stones'},
 ];
-export const SIDES = [
-    {key: '1', name: 'Side One'},
-    {key: '2', name: 'Side Two'}
-]; 
