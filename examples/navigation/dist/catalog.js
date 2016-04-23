@@ -20936,7 +20936,7 @@ var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
     var sort = _ref.sort;
-    var id = _ref.id;
+    var album = _ref.album;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
@@ -20952,8 +20952,7 @@ var Catalog = function Catalog(_ref) {
             stateNavigator: stateNavigator
         }),
         _react2.default.createElement(_Tracks2.default, {
-            albums: albums,
-            id: id,
+            album: album,
             stateNavigator: stateNavigator
         })
     );
@@ -21021,18 +21020,14 @@ var _navigationReact = require('navigation-react');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tracks = function Tracks(_ref) {
-    var albums = _ref.albums;
-    var id = _ref.id;
+    var album = _ref.album;
     var stateNavigator = _ref.stateNavigator;
 
-    if (!id) return _react2.default.createElement(
+    if (!album) return _react2.default.createElement(
         'p',
         null,
         'None'
     );
-    var album = albums.filter(function (album) {
-        return album.id === id;
-    })[0];
     return _react2.default.createElement(
         'div',
         null,
@@ -21081,11 +21076,15 @@ var stateNavigator = (0, _router2.default)();
 
 var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
+    var album = ALBUMS.filter(function (album) {
+        return album.id === data.id;
+    })[0];
+    if (album) stateNavigator.stateContext.title = album.title;
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
         sort: data.sort,
-        id: data.id,
+        album: album,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
     clearTimeout(timeout);
@@ -21110,7 +21109,7 @@ var _navigation = require('navigation');
 
 exports.default = function () {
     var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{id}',
-        defaults: { sort: 'earliest' },
+        title: 'Catalog', defaults: { sort: 'earliest' },
         defaultTypes: { id: 'number' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);

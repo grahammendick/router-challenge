@@ -7,12 +7,15 @@ const stateNavigator = createStateNavigator();
 
 var timeout;
 stateNavigator.states.catalog.navigated = (data) => {
+    const album = ALBUMS.filter(album => album.id === data.id)[0];
+    if (album)
+        stateNavigator.stateContext.title = album.title;
     ReactDOM.render(
         <Catalog
             albums={ALBUMS}
             search={data.search || ''}
             sort={data.sort}
-            id={data.id}
+            album={album}
             stateNavigator={stateNavigator}
         />,
         document.getElementById('catalog')

@@ -3,7 +3,7 @@ import Filter from './Filter.js';
 import Albums from './Albums.js';
 import Tracks from './Tracks.js';
 
-const Catalog = ({albums, search, sort, id, stateNavigator}) => (
+const Catalog = ({albums, search, sort, album, stateNavigator}) => (
     <div>
         <Filter
             search={search}
@@ -16,8 +16,7 @@ const Catalog = ({albums, search, sort, id, stateNavigator}) => (
             stateNavigator={stateNavigator}
         />
         <Tracks
-            albums={albums}
-            id={id}
+            album={album}
             stateNavigator={stateNavigator}
         />
     </div>
