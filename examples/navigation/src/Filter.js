@@ -17,6 +17,7 @@ const Filter = ({search, sort, stateNavigator}) => {
             <RefreshLink
                 navigationData={{sort: newSort}}
                 includeCurrentData={true}
+                historyAction="replace"
                 stateNavigator={stateNavigator}>
                 Showing {sort} first
             </RefreshLink>

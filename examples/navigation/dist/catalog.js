@@ -20998,6 +20998,7 @@ var Filter = function Filter(_ref) {
             {
                 navigationData: { sort: newSort },
                 includeCurrentData: true,
+                historyAction: 'replace',
                 stateNavigator: stateNavigator },
             'Showing ',
             sort,
