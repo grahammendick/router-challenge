@@ -5,7 +5,6 @@ import createStateNavigator from './router.js';
 
 const stateNavigator = createStateNavigator();
 
-var timeout;
 stateNavigator.states.catalog.navigated = (data) => {
     const album = ALBUMS.filter(album => album.id === data.id)[0];
     if (album)
@@ -20,6 +19,11 @@ stateNavigator.states.catalog.navigated = (data) => {
         />,
         document.getElementById('catalog')
     );
+    checkHistory();
+}
+
+var timeout;
+const checkHistory = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
         const currentUrl = stateNavigator.historyManager.getCurrentUrl();
