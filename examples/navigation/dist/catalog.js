@@ -20867,8 +20867,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
-var _constants = require('./constants.js');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Albums = function Albums(_ref) {
@@ -20878,7 +20876,7 @@ var Albums = function Albums(_ref) {
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var mult = sort === _constants.EARLIEST ? 1 : -1;
+    var mult = sort === 'earliest' ? 1 : -1;
     albums = albums.filter(function (album) {
         return !search || album.title.indexOf(search) !== -1;
     }).sort(function (albumA, albumB) {
@@ -20909,7 +20907,7 @@ var Albums = function Albums(_ref) {
 };
 exports.default = Albums;
 
-},{"./constants.js":198,"navigation-react":7,"react":193}],195:[function(require,module,exports){
+},{"navigation-react":7,"react":193}],195:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20975,8 +20973,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _navigationReact = require('navigation-react');
 
-var _constants = require('./constants.js');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
@@ -20984,6 +20980,7 @@ var Filter = function Filter(_ref) {
     var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
+    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
     return _react2.default.createElement(
         'div',
         null,
@@ -20999,7 +20996,7 @@ var Filter = function Filter(_ref) {
         _react2.default.createElement(
             _navigationReact.RefreshLink,
             {
-                navigationData: { sort: sort !== _constants.EARLIEST ? _constants.EARLIEST : _constants.LATEST },
+                navigationData: { sort: newSort },
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
             'Year'
@@ -21008,7 +21005,7 @@ var Filter = function Filter(_ref) {
 };
 exports.default = Filter;
 
-},{"./constants.js":198,"navigation-react":7,"react":193}],197:[function(require,module,exports){
+},{"navigation-react":7,"react":193}],197:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21062,15 +21059,6 @@ exports.default = Tracks;
 },{"navigation-react":7,"react":193}],198:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var EARLIEST = exports.EARLIEST = 'earliest';
-var LATEST = exports.LATEST = 'latest';
-
-},{}],199:[function(require,module,exports){
-'use strict';
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -21111,7 +21099,7 @@ stateNavigator.states.catalog.navigated = function (data) {
 
 stateNavigator.start();
 
-},{"./Catalog.js":195,"./router.js":200,"react":193,"react-dom":30}],200:[function(require,module,exports){
+},{"./Catalog.js":195,"./router.js":199,"react":193,"react-dom":30}],199:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21120,11 +21108,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _navigation = require('navigation');
 
-var _constants = require('./constants.js');
-
 exports.default = function () {
     var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{id}',
-        defaults: { sort: _constants.EARLIEST },
+        defaults: { sort: 'earliest' },
         defaultTypes: { id: 'number' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
@@ -21137,4 +21123,4 @@ exports.default = function () {
     return stateNavigator;
 };
 
-},{"./constants.js":198,"navigation":29}]},{},[199]);
+},{"navigation":29}]},{},[198]);
