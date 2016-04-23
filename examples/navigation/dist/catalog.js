@@ -20998,7 +20998,9 @@ var Filter = function Filter(_ref) {
                 navigationData: { sort: newSort },
                 includeCurrentData: true,
                 stateNavigator: stateNavigator },
-            'Year'
+            'Showing ',
+            sort,
+            ' first'
         )
     );
 };

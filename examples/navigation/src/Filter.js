@@ -18,7 +18,7 @@ const Filter = ({search, sort, stateNavigator}) => {
                 navigationData={{sort: newSort}}
                 includeCurrentData={true}
                 stateNavigator={stateNavigator}>
-                Year
+                Showing {sort} first
             </RefreshLink>
         </div>
     );
