@@ -1,6 +1,6 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
-import {EARLIEST, LATEST, BANDS} from './constants.js';
+import {EARLIEST, LATEST} from './constants.js';
 
 const Filter = ({search, sort, stateNavigator}) => {
     return (
@@ -14,15 +14,6 @@ const Filter = ({search, sort, stateNavigator}) => {
                     stateNavigator.refresh(data, 'none');
                 }}
             />
-            {BANDS.map(band => 
-                <RefreshLink
-                    key={band.key}
-                    navigationData={{band: band.key}}
-                    includeCurrentData={true}
-                    stateNavigator={stateNavigator}>
-                    {band.name}
-                </RefreshLink>
-            )}
             <RefreshLink
                 navigationData={{sort: sort !== EARLIEST ? EARLIEST : LATEST}}
                 includeCurrentData={true}

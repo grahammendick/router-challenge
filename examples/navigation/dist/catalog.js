@@ -20879,13 +20879,8 @@ var Albums = function Albums(_ref) {
     var stateNavigator = _ref.stateNavigator;
 
     var mult = sort === _constants.EARLIEST ? 1 : -1;
-    var bandName = _constants.BANDS.filter(function (item) {
-        return item.key === band;
-    })[0].name;
     albums = albums.filter(function (album) {
         return !search || album.title.indexOf(search) !== -1;
-    }).filter(function (album) {
-        return band === _constants.ALL || album.band === bandName;
     }).sort(function (albumA, albumB) {
         return (albumA.year - albumB.year) * mult;
     });
@@ -20942,10 +20937,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
-    var band = _ref.band;
     var sort = _ref.sort;
     var id = _ref.id;
-    var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
@@ -20957,14 +20950,12 @@ var Catalog = function Catalog(_ref) {
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             search: search,
-            band: band,
             sort: sort,
             stateNavigator: stateNavigator
         }),
         _react2.default.createElement(_Tracks2.default, {
             albums: albums,
             id: id,
-            side: side,
             stateNavigator: stateNavigator
         })
     );
@@ -21005,17 +20996,6 @@ var Filter = function Filter(_ref) {
                 stateNavigator.refresh(data, 'none');
             }
         }),
-        _constants.BANDS.map(function (band) {
-            return _react2.default.createElement(
-                _navigationReact.RefreshLink,
-                {
-                    key: band.key,
-                    navigationData: { band: band.key },
-                    includeCurrentData: true,
-                    stateNavigator: stateNavigator },
-                band.name
-            );
-        }),
         _react2.default.createElement(
             _navigationReact.RefreshLink,
             {
@@ -21046,7 +21026,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Tracks = function Tracks(_ref) {
     var albums = _ref.albums;
     var id = _ref.id;
-    var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
 
     if (!id) return _react2.default.createElement(
@@ -21084,12 +21063,10 @@ exports.default = Tracks;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-var ALL = exports.ALL = 'all';
 var EARLIEST = exports.EARLIEST = 'earliest';
 var LATEST = exports.LATEST = 'latest';
-var BANDS = exports.BANDS = [{ key: ALL, name: 'All' }, { key: 'beatles', name: 'The Beatles' }, { key: 'stones', name: 'The Rolling Stones' }];
 
 },{}],199:[function(require,module,exports){
 'use strict';
@@ -21119,10 +21096,8 @@ stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
-        band: data.band,
         sort: data.sort,
         id: data.id,
-        side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
     clearTimeout(timeout);
@@ -21148,8 +21123,8 @@ var _navigation = require('navigation');
 var _constants = require('./constants.js');
 
 exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{band?}+/from/{sort}',
-        defaults: { band: _constants.ALL, sort: _constants.EARLIEST },
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{id}',
+        defaults: { sort: _constants.EARLIEST },
         defaultTypes: { id: 'number' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);

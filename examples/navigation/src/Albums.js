@@ -1,13 +1,11 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
-import {ALL, EARLIEST, BANDS} from './constants.js';
+import {ALL, EARLIEST} from './constants.js';
 
 const Albums = ({albums, search, band, sort, stateNavigator}) => {
     const mult = sort === EARLIEST ? 1 : -1;
-    const bandName = BANDS.filter(item => item.key === band)[0].name; 
     albums = albums
         .filter(album => !search || album.title.indexOf(search) !== -1)
-        .filter(album => band === ALL || album.band === bandName)
         .sort((albumA, albumB) => (albumA.year - albumB.year) * mult);
     return (
         <ul>

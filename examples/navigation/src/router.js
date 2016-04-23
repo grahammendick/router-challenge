@@ -3,8 +3,8 @@ import {ALL, EARLIEST} from './constants.js';
 
 export default () => {
     const stateNavigator = new StateNavigator([
-        {key: 'catalog', route: '{band?}+/from/{sort}', 
-            defaults: {band: ALL, sort: EARLIEST}, 
+        {key: 'catalog', route: '{sort?}+/from/{id}', 
+            defaults: {sort: EARLIEST}, 
             defaultTypes: {id: 'number'}, trackTypes: false}
     ]);
     stateNavigator.states.catalog.urlEncode = (state, key, val) => {
