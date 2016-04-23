@@ -13,6 +13,7 @@ const Albums = ({albums, search, band, sort, stateNavigator}) => {
                     <RefreshLink
                         navigationData={{slug: album.slug}}
                         includeCurrentData={true}
+                        activeCssClass="selected"
                         stateNavigator={stateNavigator}>
                         <img
                             src={'../../sleeves/' + album.sleeve}

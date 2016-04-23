@@ -20894,6 +20894,7 @@ var Albums = function Albums(_ref) {
                     {
                         navigationData: { slug: album.slug },
                         includeCurrentData: true,
+                        activeCssClass: 'selected',
                         stateNavigator: stateNavigator },
                     _react2.default.createElement('img', {
                         src: '../../sleeves/' + album.sleeve,
