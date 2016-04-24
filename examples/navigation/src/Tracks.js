@@ -8,7 +8,7 @@ const Tracks = ({album, side, stateNavigator}) => {
     const data = stateNavigator.stateContext.data;
     const flipped = oldData.slug == data.slug && oldData.side !== data.side;
     return (
-        <div>
+        <div id="tracks">
             <h2>{album.title}</h2>
             {[1,2].map(side =>
                 <RefreshLink

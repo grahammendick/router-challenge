@@ -5,7 +5,8 @@ const Albums = ({albums, search, band, stateNavigator}) => {
     albums = albums
         .filter(album => !search || album.title.indexOf(search) !== -1);
     return (
-        <ul>
+        <div id="albums">
+            <ul>
             {albums.map(album => 
                 <li key={album.slug}>
                     <RefreshLink
@@ -20,7 +21,8 @@ const Albums = ({albums, search, band, stateNavigator}) => {
                     </RefreshLink>
                 </li>
             )}
-        </ul>
+            </ul>
+       </div> 
     );
 }
 export default Albums;

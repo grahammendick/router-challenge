@@ -3,7 +3,7 @@ import {RefreshLink} from 'navigation-react';
 
 const Search = ({search, stateNavigator}) => {
     return (
-        <div>
+        <div id="search">
             <input
                 value={search}
                 onChange={e => {

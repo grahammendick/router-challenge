@@ -20879,26 +20879,30 @@ var Albums = function Albums(_ref) {
         return !search || album.title.indexOf(search) !== -1;
     });
     return _react2.default.createElement(
-        'ul',
-        null,
-        albums.map(function (album) {
-            return _react2.default.createElement(
-                'li',
-                { key: album.slug },
-                _react2.default.createElement(
-                    _navigationReact.RefreshLink,
-                    {
-                        navigationData: { slug: album.slug, side: '' },
-                        includeCurrentData: true,
-                        stateNavigator: stateNavigator },
-                    _react2.default.createElement('img', {
-                        src: '../../sleeves/' + album.sleeve,
-                        alt: album.title
-                    }),
-                    album.title
-                )
-            );
-        })
+        'div',
+        { id: 'albums' },
+        _react2.default.createElement(
+            'ul',
+            null,
+            albums.map(function (album) {
+                return _react2.default.createElement(
+                    'li',
+                    { key: album.slug },
+                    _react2.default.createElement(
+                        _navigationReact.RefreshLink,
+                        {
+                            navigationData: { slug: album.slug, side: '' },
+                            includeCurrentData: true,
+                            stateNavigator: stateNavigator },
+                        _react2.default.createElement('img', {
+                            src: '../../sleeves/' + album.sleeve,
+                            alt: album.title
+                        }),
+                        album.title
+                    )
+                );
+            })
+        )
     );
 };
 exports.default = Albums;
@@ -20975,7 +20979,7 @@ var Search = function Search(_ref) {
 
     return _react2.default.createElement(
         'div',
-        null,
+        { id: 'search' },
         _react2.default.createElement('input', {
             value: search,
             onChange: function onChange(e) {
@@ -21019,7 +21023,7 @@ var Tracks = function Tracks(_ref) {
     var flipped = oldData.slug == data.slug && oldData.side !== data.side;
     return _react2.default.createElement(
         'div',
-        null,
+        { id: 'tracks' },
         _react2.default.createElement(
             'h2',
             null,
