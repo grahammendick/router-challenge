@@ -18,11 +18,11 @@ const Tracks = ({album, side, stateNavigator}) => {
                     Side {side}
                 </RefreshLink>
             )}
-            <ul>
+            <ol>
                 {album['side' + side].map(track => 
                     <li key={track}>{track}</li>
                 )}
-            </ul>
+            </ol>
         </div>
     );
 }

@@ -75,13 +75,13 @@ h2{
     padding-left:10%;
     margin:20px 0 10px 0;
 }
-#tracks ul{
+#tracks ol{
     padding:0;
     list-style:none;
     background-color:rgb(170, 170, 170);
     margin:0 5% 0 0;
 }
-#tracks ul li{
+#tracks ol li{
     padding:8px 7%;
     background-color:rgb(24, 24, 24);
     margin:1px 0;

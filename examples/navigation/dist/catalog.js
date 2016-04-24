@@ -21039,7 +21039,7 @@ var Tracks = function Tracks(_ref) {
             );
         }),
         _react2.default.createElement(
-            'ul',
+            'ol',
             null,
             album['side' + side].map(function (track) {
                 return _react2.default.createElement(
