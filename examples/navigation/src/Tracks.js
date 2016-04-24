@@ -15,6 +15,7 @@ const Tracks = ({album, side, stateNavigator}) => {
                     key={side}
                     navigationData={{side: side}}
                     includeCurrentData={true}
+                    historyAction="replace"
                     activeCssClass="selected"
                     stateNavigator={stateNavigator}>
                     Side {side}

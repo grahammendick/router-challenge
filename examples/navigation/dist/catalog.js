@@ -21032,6 +21032,7 @@ var Tracks = function Tracks(_ref) {
                     key: side,
                     navigationData: { side: side },
                     includeCurrentData: true,
+                    historyAction: 'replace',
                     activeCssClass: 'selected',
                     stateNavigator: stateNavigator },
                 'Side ',
