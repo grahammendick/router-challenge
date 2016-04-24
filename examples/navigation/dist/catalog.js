@@ -21014,6 +21014,9 @@ var Tracks = function Tracks(_ref) {
         null,
         'None'
     );
+    var oldData = stateNavigator.stateContext.oldData;
+    var data = stateNavigator.stateContext.data;
+    var flipped = oldData.slug == data.slug && oldData.side !== data.side;
     return _react2.default.createElement(
         'div',
         null,
@@ -21037,7 +21040,7 @@ var Tracks = function Tracks(_ref) {
         }),
         _react2.default.createElement(
             'ul',
-            null,
+            { className: flipped ? 'side' + side : null },
             album['side' + side].map(function (track) {
                 return _react2.default.createElement(
                     'li',
