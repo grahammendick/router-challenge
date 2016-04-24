@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:700,400,100);
+body{
+    background-color:rgb(40, 40, 40);
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+#catalog{
+    width:900px;
+    height:500px;
+    margin:0 auto;
+    background-color:rgb(24, 24, 24);
+    margin-top:30px;
+}
+#search,#albums{
+    width:60%;
+    float:left;
+}
+#albums{
+    clear:left;
+}
+#tracks{
+    width:40%;
+    float:right;
+    position: relative;
+    top:-40px;
+}
+#search{
+    text-align:center;
+    padding:12px 0;
+}
+#search input{
+    font-family: 'Roboto', sans-serif;
+    border-radius: 15px;
+    border: none;
+    height: 25px;
+    padding: 10px;
+}
+#albums ul{
+    padding:0;
+    list-style:none;
+    width:90%;
+    margin:0 auto;
+    overflow-y:scroll;
+    height:435px;
+}
+#albums ul::-webkit-scrollbar {
+    width: 8px;
+}
+#albums ul::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #373737;
+}
+#albums li{
+    float:left;
+    width:30%;
+    margin:1.5%;
+    padding:2% 0;
+    text-align:center;
+    background-color:rgb(40, 40, 40);
+}
+#albums li a{
+    display:block;
+    color:rgb(170, 170, 170);
+    text-decoration:none;
+    font-size: 10pt;
+}
+#albums li a img{
+    display:block;
+    margin:0 auto;
+    padding-bottom:7px;
+}
+h2{
+    color:#fff;
+    font-size:25pt;
+    font-weight:100;
+    padding-left:10%;
+    margin:20px 0 10px 0;
+}
+#tracks ul{
+    padding:0;
+    list-style:none;
+    background-color:rgb(170, 170, 170);
+    margin:0 5% 0 0;
+}
+#tracks ul li{
+    padding:8px 7%;
+    background-color:rgb(24, 24, 24);
+    margin:1px 0;
+    color:#fff;
+    font-size: 11pt;
+}
+#tracks a{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:rgb(170, 170, 170);
+}
+#tracks a.selected{
+    color:rgb(30, 215, 96);
+}
+#tracks a:nth-of-type(2){
+    float:right;
+    padding-right:5%;
+}
