@@ -93,6 +93,7 @@ h2{
     text-transform:uppercase;
     letter-spacing:1px;
     color:rgb(170, 170, 170);
+    font-size:11pt;
 }
 #tracks a.selected{
     color:rgb(30, 215, 96);
