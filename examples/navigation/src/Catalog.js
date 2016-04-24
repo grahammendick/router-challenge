@@ -4,7 +4,7 @@ import Albums from './Albums.js';
 import Tracks from './Tracks.js';
 
 const Catalog = ({albums, search, album, side, stateNavigator}) => (
-    <div>
+    <div id="catalog">
         <Search
             search={search}
             stateNavigator={stateNavigator} />

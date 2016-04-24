@@ -5,8 +5,7 @@ const Tracks = ({album, side, stateNavigator}) => {
     if (!album)
         return <p>None</p>;
     const oldData = stateNavigator.stateContext.oldData;
-    const data = stateNavigator.stateContext.data;
-    const flipped = oldData.slug == data.slug && oldData.side !== data.side;
+    const flipped = oldData.slug == album.slug && oldData.side !== side;
     return (
         <div id="tracks">
             <h2>{album.title}</h2>

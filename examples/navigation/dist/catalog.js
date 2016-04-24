@@ -20940,7 +20940,7 @@ var Catalog = function Catalog(_ref) {
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
-        null,
+        { id: 'catalog' },
         _react2.default.createElement(_Search2.default, {
             search: search,
             stateNavigator: stateNavigator }),
@@ -20976,7 +20976,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Search = function Search(_ref) {
     var search = _ref.search;
     var stateNavigator = _ref.stateNavigator;
-
     return _react2.default.createElement(
         'div',
         { id: 'search' },
@@ -21019,8 +21018,7 @@ var Tracks = function Tracks(_ref) {
         'None'
     );
     var oldData = stateNavigator.stateContext.oldData;
-    var data = stateNavigator.stateContext.data;
-    var flipped = oldData.slug == data.slug && oldData.side !== data.side;
+    var flipped = oldData.slug == album.slug && oldData.side !== side;
     return _react2.default.createElement(
         'div',
         { id: 'tracks' },
