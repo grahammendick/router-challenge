@@ -1,7 +1,7 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-const Albums = ({albums, search, band, stateNavigator}) => {
+const Albums = ({albums, search, stateNavigator}) => {
     albums = albums
         .filter(album => !search || album.title.indexOf(search) !== -1);
     return (

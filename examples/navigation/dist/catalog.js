@@ -20872,7 +20872,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Albums = function Albums(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
-    var band = _ref.band;
     var stateNavigator = _ref.stateNavigator;
 
     albums = albums.filter(function (album) {
