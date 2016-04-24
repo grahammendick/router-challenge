@@ -1,8 +1,7 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-const Filter = ({search, sort, stateNavigator}) => {
-    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
+const Search = ({search, stateNavigator}) => {
     return (
         <div>
             <input
@@ -14,14 +13,7 @@ const Filter = ({search, sort, stateNavigator}) => {
                     stateNavigator.refresh(data, 'none');
                 }}
             />
-            <RefreshLink
-                navigationData={{sort: newSort}}
-                includeCurrentData={true}
-                historyAction="replace"
-                stateNavigator={stateNavigator}>
-                Showing {sort} first
-            </RefreshLink>
         </div>
     );
 }
-export default Filter;
+export default Search;

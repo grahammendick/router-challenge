@@ -20873,14 +20873,10 @@ var Albums = function Albums(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
     var band = _ref.band;
-    var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var mult = sort === 'earliest' ? 1 : -1;
     albums = albums.filter(function (album) {
         return !search || album.title.indexOf(search) !== -1;
-    }).sort(function (albumA, albumB) {
-        return (albumA.year - albumB.year) * mult;
     });
     return _react2.default.createElement(
         'ul',
@@ -20892,9 +20888,8 @@ var Albums = function Albums(_ref) {
                 _react2.default.createElement(
                     _navigationReact.RefreshLink,
                     {
-                        navigationData: { slug: album.slug },
+                        navigationData: { slug: album.slug, side: '' },
                         includeCurrentData: true,
-                        activeCssClass: 'selected',
                         stateNavigator: stateNavigator },
                     _react2.default.createElement('img', {
                         src: '../../sleeves/' + album.sleeve,
@@ -20919,9 +20914,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = require('./Filter.js');
+var _Search = require('./Search.js');
 
-var _Filter2 = _interopRequireDefault(_Filter);
+var _Search2 = _interopRequireDefault(_Search);
 
 var _Albums = require('./Albums.js');
 
@@ -20936,31 +20931,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Catalog = function Catalog(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
-    var sort = _ref.sort;
     var album = _ref.album;
+    var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Filter2.default, {
+        _react2.default.createElement(_Search2.default, {
             search: search,
-            sort: sort,
             stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             search: search,
-            sort: sort,
             stateNavigator: stateNavigator
         }),
         _react2.default.createElement(_Tracks2.default, {
             album: album,
+            side: side,
             stateNavigator: stateNavigator
         })
     );
 };
 exports.default = Catalog;
 
-},{"./Albums.js":194,"./Filter.js":196,"./Tracks.js":197,"react":193}],196:[function(require,module,exports){
+},{"./Albums.js":194,"./Search.js":196,"./Tracks.js":197,"react":193}],196:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20975,12 +20969,10 @@ var _navigationReact = require('navigation-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Filter = function Filter(_ref) {
+var Search = function Search(_ref) {
     var search = _ref.search;
-    var sort = _ref.sort;
     var stateNavigator = _ref.stateNavigator;
 
-    var newSort = sort !== 'earliest' ? 'earliest' : 'latest';
     return _react2.default.createElement(
         'div',
         null,
@@ -20992,21 +20984,10 @@ var Filter = function Filter(_ref) {
                 data = stateContext.includeCurrentData(data);
                 stateNavigator.refresh(data, 'none');
             }
-        }),
-        _react2.default.createElement(
-            _navigationReact.RefreshLink,
-            {
-                navigationData: { sort: newSort },
-                includeCurrentData: true,
-                historyAction: 'replace',
-                stateNavigator: stateNavigator },
-            'Showing ',
-            sort,
-            ' first'
-        )
+        })
     );
 };
-exports.default = Filter;
+exports.default = Search;
 
 },{"navigation-react":7,"react":193}],197:[function(require,module,exports){
 'use strict';
@@ -21025,6 +21006,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Tracks = function Tracks(_ref) {
     var album = _ref.album;
+    var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
 
     if (!album) return _react2.default.createElement(
@@ -21040,10 +21022,23 @@ var Tracks = function Tracks(_ref) {
             null,
             album.title
         ),
+        [1, 2].map(function (side) {
+            return _react2.default.createElement(
+                _navigationReact.RefreshLink,
+                {
+                    key: side,
+                    navigationData: { side: side },
+                    includeCurrentData: true,
+                    activeCssClass: 'selected',
+                    stateNavigator: stateNavigator },
+                'Side ',
+                side
+            );
+        }),
         _react2.default.createElement(
             'ul',
             null,
-            album.tracks.map(function (track) {
+            album['side' + side].map(function (track) {
                 return _react2.default.createElement(
                     'li',
                     { key: track },
@@ -21085,8 +21080,8 @@ stateNavigator.states.catalog.navigated = function (data) {
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
-        sort: data.sort,
         album: album,
+        side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
     stateNavigator.stateContext.title = album ? album.title : 'Catalog';
@@ -21116,8 +21111,8 @@ Object.defineProperty(exports, "__esModule", {
 var _navigation = require('navigation');
 
 exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{sort?}+/from/{slug}',
-        defaults: { sort: 'earliest' }, trackTypes: false }]);
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}',
+        defaults: { side: '1' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
         return key !== 'search' ? val : val.replace(/%20/g, '+');

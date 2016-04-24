@@ -2,8 +2,8 @@ import {StateNavigator} from 'navigation';
 
 export default () => {
     const stateNavigator = new StateNavigator([
-        {key: 'catalog', route: '{sort?}+/from/{slug}',
-            defaults: {sort: 'earliest'}, trackTypes: false}
+        {key: 'catalog', route: '{slug?}+/side/{side}',
+            defaults: {side: '1'}, trackTypes: false}
     ]);
     stateNavigator.states.catalog.urlEncode = (state, key, val) => {
         val = encodeURIComponent(val);

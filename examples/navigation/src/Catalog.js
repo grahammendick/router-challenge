@@ -1,22 +1,21 @@
 import React from 'react';
-import Filter from './Filter.js';
+import Search from './Search.js';
 import Albums from './Albums.js';
 import Tracks from './Tracks.js';
 
-const Catalog = ({albums, search, sort, album, stateNavigator}) => (
+const Catalog = ({albums, search, album, side, stateNavigator}) => (
     <div>
-        <Filter
+        <Search
             search={search}
-            sort={sort}
             stateNavigator={stateNavigator} />
         <Albums
             albums={albums}
             search={search}
-            sort={sort}
             stateNavigator={stateNavigator}
         />
         <Tracks
             album={album}
+            side={side}
             stateNavigator={stateNavigator}
         />
     </div>

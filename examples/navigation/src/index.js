@@ -11,8 +11,8 @@ stateNavigator.states.catalog.navigated = (data) => {
         <Catalog
             albums={ALBUMS}
             search={data.search || ''}
-            sort={data.sort}
             album={album}
+            side={data.side}
             stateNavigator={stateNavigator}
         />,
         document.getElementById('catalog')
