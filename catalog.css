@@ -1,8 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:700,400,100);
 body{
     background-color:rgb(40, 40, 40);
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    box-sizing:border-box;
+    font-family:sans-serif;
 }
 #catalog{
     width:900px;
@@ -21,7 +20,7 @@ body{
 #tracks{
     width:40%;
     float:right;
-    position: relative;
+    position:relative;
     top:-40px;
 }
 #search{
@@ -29,11 +28,11 @@ body{
     padding:12px 0;
 }
 #search input{
-    font-family: 'Roboto', sans-serif;
-    border-radius: 15px;
-    border: none;
-    height: 25px;
-    padding: 10px;
+    font-family:sans-serif;
+    border-radius:15px;
+    border:none;
+    height:25px;
+    padding:10px;
 }
 #albums ul{
     padding:0;
@@ -44,11 +43,11 @@ body{
     height:435px;
 }
 #albums ul::-webkit-scrollbar {
-    width: 8px;
+    width:8px;
 }
 #albums ul::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background: #373737;
+    border-radius:4px;
+    background:#373737;
 }
 #albums li{
     float:left;
@@ -62,7 +61,7 @@ body{
     display:block;
     color:rgb(170, 170, 170);
     text-decoration:none;
-    font-size: 10pt;
+    font-size:10pt;
 }
 #albums li a img{
     display:block;
@@ -70,9 +69,9 @@ body{
     padding-bottom:7px;
 }
 h2{
-    color:#fff;
+    color:rgb(170, 170, 170);
     font-size:25pt;
-    font-weight:100;
+    font-weight:normal;
     padding-left:10%;
     margin:20px 0 10px 0;
 }
@@ -87,11 +86,11 @@ h2{
     background-color:rgb(24, 24, 24);
     margin:1px 0;
     color:#fff;
-    font-size: 11pt;
+    font-size:11pt;
 }
 #tracks a{
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform:uppercase;
+    letter-spacing:1px;
     color:rgb(170, 170, 170);
 }
 #tracks a.selected{

@@ -4,8 +4,6 @@ import {RefreshLink} from 'navigation-react';
 const Tracks = ({album, side, stateNavigator}) => {
     if (!album)
         return <p>None</p>;
-    const oldData = stateNavigator.stateContext.oldData;
-    const flipped = oldData.slug == album.slug && oldData.side !== side;
     return (
         <div id="tracks">
             <h2>{album.title}</h2>
@@ -20,7 +18,7 @@ const Tracks = ({album, side, stateNavigator}) => {
                     Side {side}
                 </RefreshLink>
             )}
-            <ul className={flipped ? 'side' + side : null}>
+            <ul>
                 {album['side' + side].map(track => 
                     <li key={track}>{track}</li>
                 )}
