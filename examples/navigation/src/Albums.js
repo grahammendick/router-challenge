@@ -19,7 +19,8 @@ const Albums = ({albums, search, stateNavigator}) => {
                             src={'../../sleeves/' + album.sleeve}
                             alt={album.title}
                         />
-                        {album.title}
+                        <div>{album.title}</div>
+                        <div>{album.band}</div>
                     </RefreshLink>
                 </li>
             )}

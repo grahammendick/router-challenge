@@ -21648,7 +21648,16 @@ var Albums = function Albums(_ref) {
                             src: '../../sleeves/' + album.sleeve,
                             alt: album.title
                         }),
-                        album.title
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            album.title
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            album.band
+                        )
                     )
                 );
             })
@@ -21790,6 +21799,11 @@ var Tracks = function Tracks(_ref) {
             null,
             album.title
         ),
+        _react2.default.createElement(
+            'h2',
+            null,
+            album.band
+        ),
         [1, 2].map(function (side) {
             return _react2.default.createElement(
                 _navigationReact.RefreshLink,
@@ -21863,7 +21877,7 @@ stateNavigator.states.catalog.navigated = function (data) {
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
     if (album) {
-        stateNavigator.stateContext.title = album.title + ' Side ' + data.side;
+        stateNavigator.stateContext.title = album.title + ', ' + album.band;
     }
 };
 

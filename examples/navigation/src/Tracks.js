@@ -9,6 +9,7 @@ const Tracks = ({album, side, stateNavigator}) => {
     return (
         <div id="tracks">
             <h1>{album.title}</h1>
+            <h2>{album.band}</h2>
             {[1,2].map(side =>
                 <RefreshLink
                     key={side}

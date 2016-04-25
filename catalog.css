@@ -84,7 +84,14 @@ h1{
     font-weight:normal;
     text-align:center;
     padding-right:5%;
-    margin:20px 0 10px 0;
+    margin:15px 0 0 0;
+}
+h2{
+    color:rgb(170, 170, 170);
+    font-size:14pt;
+    font-weight:normal;
+    margin:3px 0;
+    text-align:center;
 }
 #tracks ol{
     position:absolute;

@@ -18,7 +18,7 @@ stateNavigator.states.catalog.navigated = (data) => {
         document.getElementById('catalog')
     );
     if (album) {
-        stateNavigator.stateContext.title = `${album.title} Side ${data.side}`;
+        stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
     }
 }
 
