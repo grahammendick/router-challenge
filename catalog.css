@@ -77,6 +77,7 @@ h2{
     margin:20px 0 10px 0;
 }
 #tracks ol{
+    clear:both;
     padding:0;
     list-style:none;
     background-color:rgb(170, 170, 170);
@@ -94,6 +95,9 @@ h2{
     letter-spacing:1px;
     color:rgb(170, 170, 170);
     font-size:11pt;
+    float:left;
+    display:block;
+    padding-bottom:5px;
 }
 #tracks a.selected{
     color:rgb(30, 215, 96);
