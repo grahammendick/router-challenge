@@ -10,8 +10,8 @@ export default () => {
         return key !== 'search' ? val : val.replace(/%20/g, '+');
     }
     stateNavigator.states.catalog.urlDecode = (state, key, val) => {
-        val = decodeURIComponent(val);
-        return key !== 'search' ? val : val.replace(/\+/g, ' ');
+        val = key !== 'search' ? val : val.replace(/\+/g, ' ');
+        return decodeURIComponent(val);
     }
     return stateNavigator;
 }
