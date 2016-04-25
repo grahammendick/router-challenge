@@ -17,7 +17,7 @@ const Albums = ({albums, search, stateNavigator}) => {
                         includeCurrentData={true}
                         stateNavigator={stateNavigator}>
                         <img
-                            src={'../../sleeves/' + album.sleeve}
+                            src={`../../sleeves/${album.slug}.jpg`}
                             alt={album.title}
                         />
                         <div>{album.title}</div>

@@ -21645,7 +21645,7 @@ var Albums = function Albums(_ref) {
                             includeCurrentData: true,
                             stateNavigator: stateNavigator },
                         _react2.default.createElement('img', {
-                            src: '../../sleeves/' + album.sleeve,
+                            src: '../../sleeves/' + album.slug + '.jpg',
                             alt: album.title
                         }),
                         _react2.default.createElement(
