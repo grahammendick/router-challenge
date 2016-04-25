@@ -1,11 +1,10 @@
 body{
     background-color:rgb(40, 40, 40);
-    box-sizing:border-box;
     font-family:sans-serif;
 }
 #catalog{
     width:900px;
-    height:500px;
+    height:520px;
     margin:0 auto;
     background-color:rgb(24, 24, 24);
     margin-top:30px;
@@ -24,7 +23,7 @@ body{
     top:-40px;
     left:-1%;
     overflow:hidden;
-    height:475px;
+    height:485px;
 }
 #search{
     text-align:center;
@@ -43,7 +42,7 @@ body{
     width:90%;
     margin:0 auto;
     overflow-y:scroll;
-    height:435px;
+    height:445px;
 }
 #albums ul::-webkit-scrollbar {
     width:8px;
