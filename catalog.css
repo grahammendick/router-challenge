@@ -42,7 +42,7 @@ body{
     border-radius:15px;
     border:none;
     height:25px;
-    padding:10px;
+    padding-left:10px;
 }
 #albums ul{
     padding:0;
