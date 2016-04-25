@@ -52,10 +52,10 @@ body{
     overflow-y:scroll;
     height:445px;
 }
-#albums ul::-webkit-scrollbar {
+#albums ul::-webkit-scrollbar{
     width:8px;
 }
-#albums ul::-webkit-scrollbar-thumb {
+#albums ul::-webkit-scrollbar-thumb{
     border-radius:4px;
     background:#373737;
 }
@@ -114,10 +114,10 @@ h2{
 #tracks a.selected{
     color:rgb(30, 215, 96);
 }
-.flip-leave.flip-leave-active {
+.flip-leave.flip-leave-active{
     transform:translate(100%, 0);
 }
-.flip-leave, .flip-enter.flip-enter-active {
+.flip-leave, .flip-enter.flip-enter-active{
     transform:translate(0, 0);
 }
 .flip-enter{
