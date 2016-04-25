@@ -5,9 +5,9 @@ import createStateNavigator from './router.js';
 
 const stateNavigator = createStateNavigator();
 
-var timeout;
 stateNavigator.states.catalog.navigated = (data) => {
     const album = ALBUMS.filter(album => album.slug === data.slug)[0];
+    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
     ReactDOM.render(
         <Catalog
             albums={ALBUMS}
@@ -18,12 +18,6 @@ stateNavigator.states.catalog.navigated = (data) => {
         />,
         document.getElementById('catalog')
     );
-    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        stateNavigator.historyManager
-            .addHistory(stateNavigator.stateContext.url);
-    }, 1000);
 }
 
 stateNavigator.start();

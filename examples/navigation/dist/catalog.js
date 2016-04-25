@@ -21727,6 +21727,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Search = function Search(_ref) {
     var search = _ref.search;
     var stateNavigator = _ref.stateNavigator;
+
+    clearTimeout(stateNavigator.states.catalog.timeout);
+    stateNavigator.states.catalog.timeout = setTimeout(function () {
+        stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
+    }, 1000);
     return _react2.default.createElement(
         'div',
         { id: 'search' },
@@ -21849,11 +21854,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var stateNavigator = (0, _router2.default)();
 
-var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
     var album = ALBUMS.filter(function (album) {
         return album.slug === data.slug;
     })[0];
+    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
@@ -21861,11 +21866,6 @@ stateNavigator.states.catalog.navigated = function (data) {
         side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
-    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
-    clearTimeout(timeout);
-    timeout = setTimeout(function () {
-        stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
-    }, 1000);
 };
 
 stateNavigator.start();
