@@ -21623,9 +21623,11 @@ var Albums = function Albums(_ref) {
     var search = _ref.search;
     var stateNavigator = _ref.stateNavigator;
 
-    albums = albums.filter(function (album) {
-        return !search || album.title.indexOf(search) !== -1;
-    });
+    if (search) {
+        albums = albums.filter(function (album) {
+            return album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        });
+    }
     return _react2.default.createElement(
         'div',
         { id: 'albums' },
