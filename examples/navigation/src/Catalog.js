@@ -5,7 +5,6 @@ import Tracks from './Tracks.js';
 
 const Catalog = ({albums, search, album, side, stateNavigator}) => (
     <div id="catalog">
-        <h1 className="hidden">Catalog</h1>
         <Search search={search} stateNavigator={stateNavigator} />
         <Albums
             albums={albums}

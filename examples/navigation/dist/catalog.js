@@ -21691,11 +21691,6 @@ var Catalog = function Catalog(_ref) {
     return _react2.default.createElement(
         'div',
         { id: 'catalog' },
-        _react2.default.createElement(
-            'h1',
-            { className: 'hidden' },
-            'Catalog'
-        ),
         _react2.default.createElement(_Search2.default, { search: search, stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
@@ -21791,7 +21786,7 @@ var Tracks = function Tracks(_ref) {
         'div',
         { id: 'tracks' },
         _react2.default.createElement(
-            'h2',
+            'h1',
             null,
             album.title
         ),
