@@ -21625,7 +21625,7 @@ var Albums = function Albums(_ref) {
 
     if (search) {
         albums = albums.filter(function (album) {
-            return album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            return album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || album.band.toLowerCase().indexOf(search.toLowerCase()) !== -1;
         });
     }
     return _react2.default.createElement(

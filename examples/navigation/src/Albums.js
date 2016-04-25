@@ -4,7 +4,8 @@ import {RefreshLink} from 'navigation-react';
 const Albums = ({albums, search, stateNavigator}) => {
     if (search) {
         albums = albums.filter(album => 
-            album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+            album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+            || album.band.toLowerCase().indexOf(search.toLowerCase()) !== -1);
     }
     return (
         <div id="albums">
