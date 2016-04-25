@@ -2,7 +2,7 @@ import {StateNavigator} from 'navigation';
 
 export default () => {
     const stateNavigator = new StateNavigator([
-        {key: 'catalog', route: '{slug?}+/side/{side}',
+        {key: 'catalog', route: '{slug?}+/side/{side}', title: 'Catalog',
             defaults: {side: '1'}, trackTypes: false}
     ]);
     stateNavigator.states.catalog.urlEncode = (state, key, val) => {

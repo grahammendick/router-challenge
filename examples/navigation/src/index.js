@@ -7,7 +7,6 @@ const stateNavigator = createStateNavigator();
 
 stateNavigator.states.catalog.navigated = (data) => {
     const album = ALBUMS.filter(album => album.slug === data.slug)[0];
-    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
     ReactDOM.render(
         <Catalog
             albums={ALBUMS}
@@ -18,6 +17,9 @@ stateNavigator.states.catalog.navigated = (data) => {
         />,
         document.getElementById('catalog')
     );
+    if (album) {
+        stateNavigator.stateContext.title = `${album.title} Side ${data.side}`;
+    }
 }
 
 stateNavigator.start();

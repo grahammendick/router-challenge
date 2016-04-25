@@ -21860,7 +21860,6 @@ stateNavigator.states.catalog.navigated = function (data) {
     var album = ALBUMS.filter(function (album) {
         return album.slug === data.slug;
     })[0];
-    stateNavigator.stateContext.title = album ? album.title : 'Catalog';
     _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
@@ -21868,6 +21867,9 @@ stateNavigator.states.catalog.navigated = function (data) {
         side: data.side,
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
+    if (album) {
+        stateNavigator.stateContext.title = album.title + ' Side ' + data.side;
+    }
 };
 
 stateNavigator.start();
@@ -21882,7 +21884,7 @@ Object.defineProperty(exports, "__esModule", {
 var _navigation = require('navigation');
 
 exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}',
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}', title: 'Catalog',
         defaults: { side: '1' }, trackTypes: false }]);
     stateNavigator.states.catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
