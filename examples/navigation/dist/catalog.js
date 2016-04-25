@@ -21076,6 +21076,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var stateNavigator = (0, _router2.default)();
 
+var timeout;
 stateNavigator.states.catalog.navigated = function (data) {
     var album = ALBUMS.filter(function (album) {
         return album.slug === data.slug;
@@ -21088,11 +21089,6 @@ stateNavigator.states.catalog.navigated = function (data) {
         stateNavigator: stateNavigator
     }), document.getElementById('catalog'));
     stateNavigator.stateContext.title = album ? album.title : 'Catalog';
-    checkHistory();
-};
-
-var timeout;
-var checkHistory = function checkHistory() {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
         stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);

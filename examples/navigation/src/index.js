@@ -5,6 +5,7 @@ import createStateNavigator from './router.js';
 
 const stateNavigator = createStateNavigator();
 
+var timeout;
 stateNavigator.states.catalog.navigated = (data) => {
     const album = ALBUMS.filter(album => album.slug === data.slug)[0];
     ReactDOM.render(
@@ -18,11 +19,6 @@ stateNavigator.states.catalog.navigated = (data) => {
         document.getElementById('catalog')
     );
     stateNavigator.stateContext.title = album ? album.title : 'Catalog';
-    checkHistory();
-}
-
-var timeout;
-const checkHistory = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
         stateNavigator.historyManager
