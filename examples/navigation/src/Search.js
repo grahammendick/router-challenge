@@ -3,7 +3,10 @@ import {RefreshLink} from 'navigation-react';
 
 const Search = ({search, stateNavigator}) => (
     <div id="search">
+        <label htmlFor="field" className="hidden">Search</label>
         <input
+            id="field"
+            placeholder="Search"
             value={search}
             onChange={e => {
                 var data = {search: e.target.value};

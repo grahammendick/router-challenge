@@ -2,6 +2,14 @@ body{
     background-color:rgb(40, 40, 40);
     font-family:sans-serif;
 }
+.hidden{
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
 #catalog{
     width:900px;
     height:520px;

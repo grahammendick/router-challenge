@@ -21689,9 +21689,12 @@ var Catalog = function Catalog(_ref) {
     return _react2.default.createElement(
         'div',
         { id: 'catalog' },
-        _react2.default.createElement(_Search2.default, {
-            search: search,
-            stateNavigator: stateNavigator }),
+        _react2.default.createElement(
+            'h1',
+            { className: 'hidden' },
+            'Catalog'
+        ),
+        _react2.default.createElement(_Search2.default, { search: search, stateNavigator: stateNavigator }),
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             search: search,
@@ -21727,7 +21730,14 @@ var Search = function Search(_ref) {
     return _react2.default.createElement(
         'div',
         { id: 'search' },
+        _react2.default.createElement(
+            'label',
+            { htmlFor: 'field', className: 'hidden' },
+            'Search'
+        ),
         _react2.default.createElement('input', {
+            id: 'field',
+            placeholder: 'Search',
             value: search,
             onChange: function onChange(e) {
                 var data = { search: e.target.value };
