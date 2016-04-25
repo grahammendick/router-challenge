@@ -21095,10 +21095,7 @@ var timeout;
 var checkHistory = function checkHistory() {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
-        var currentUrl = stateNavigator.historyManager.getCurrentUrl();
-        if (currentUrl !== stateNavigator.stateContext.url) {
-            stateNavigator.navigateLink(stateNavigator.stateContext.url);
-        }
+        stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
     }, 1000);
 };
 

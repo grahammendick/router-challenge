@@ -25,10 +25,8 @@ var timeout;
 const checkHistory = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-        const currentUrl = stateNavigator.historyManager.getCurrentUrl();
-        if (currentUrl !== stateNavigator.stateContext.url) {
-            stateNavigator.navigateLink(stateNavigator.stateContext.url);
-        }
+        stateNavigator.historyManager
+            .addHistory(stateNavigator.stateContext.url);
     }, 1000);
 }
 
