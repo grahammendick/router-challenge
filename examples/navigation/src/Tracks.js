@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {RefreshLink} from 'navigation-react';
+import Info from './Info.js';
 
 const Tracks = ({album, side, stateNavigator}) => {
-    if (!album)
-        return <p>None</p>;
+    if (!album) {
+        return <Info />;
+    }
     const flipped = stateNavigator.stateContext.oldData.slug === album.slug;
     return (
         <div id="tracks">

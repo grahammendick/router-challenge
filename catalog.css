@@ -83,7 +83,6 @@ h1{
     font-size:25pt;
     font-weight:normal;
     text-align:center;
-    padding-right:5%;
     margin:15px 0 0 0;
 }
 h2{
@@ -92,6 +91,13 @@ h2{
     font-weight:normal;
     margin:3px 0;
     text-align:center;
+    padding-bottom: 5px;
+}
+#tracks p{
+    margin:10px;
+    text-align:justify;
+    color:#fff;
+    line-height:15pt;
 }
 #tracks ol{
     position:absolute;
@@ -115,7 +121,6 @@ h2{
     letter-spacing:1px;
     color:rgb(170, 170, 170);
     font-size:11pt;
-    padding-bottom:5px;
     padding-right:5%;
 }
 #tracks a.selected{

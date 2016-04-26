@@ -21715,7 +21715,53 @@ var Catalog = function Catalog(_ref) {
 };
 exports.default = Catalog;
 
-},{"./Albums.js":201,"./Search.js":203,"./Tracks.js":204,"react":200}],203:[function(require,module,exports){
+},{"./Albums.js":201,"./Search.js":204,"./Tracks.js":205,"react":200}],203:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Info = function Info() {
+    return _react2.default.createElement(
+        "div",
+        { id: "tracks" },
+        _react2.default.createElement(
+            "h1",
+            null,
+            "Navigation"
+        ),
+        _react2.default.createElement(
+            "h2",
+            null,
+            "The data-first JavaScript router"
+        ),
+        _react2.default.createElement(
+            "a",
+            { href: "https://github.com/grahammendick/navigation" },
+            "Source"
+        ),
+        _react2.default.createElement(
+            "a",
+            { href: "https://github.com/grahammendick/router-challenge/tree/master/examples/navigation" },
+            "Example Source"
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            "\"Other JavaScript routers have got it all back to front. They want you to configure your routes before you even know what data you're passing. With the Navigation router, you can delay your route configuration until after your application's up and running.\""
+        )
+    );
+};
+exports.default = Info;
+
+},{"react":200}],204:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21761,7 +21807,7 @@ var Search = function Search(_ref) {
 };
 exports.default = Search;
 
-},{"navigation-react":7,"react":200}],204:[function(require,module,exports){
+},{"navigation-react":7,"react":200}],205:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21778,6 +21824,10 @@ var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTran
 
 var _navigationReact = require('navigation-react');
 
+var _Info = require('./Info.js');
+
+var _Info2 = _interopRequireDefault(_Info);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tracks = function Tracks(_ref) {
@@ -21785,11 +21835,9 @@ var Tracks = function Tracks(_ref) {
     var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
 
-    if (!album) return _react2.default.createElement(
-        'p',
-        null,
-        'None'
-    );
+    if (!album) {
+        return _react2.default.createElement(_Info2.default, null);
+    }
     var flipped = stateNavigator.stateContext.oldData.slug === album.slug;
     return _react2.default.createElement(
         'div',
@@ -21842,7 +21890,7 @@ var Tracks = function Tracks(_ref) {
 };
 exports.default = Tracks;
 
-},{"navigation-react":7,"react":200,"react-addons-css-transition-group":30}],205:[function(require,module,exports){
+},{"./Info.js":203,"navigation-react":7,"react":200,"react-addons-css-transition-group":30}],206:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -21883,7 +21931,7 @@ stateNavigator.states.catalog.navigated = function (data) {
 
 stateNavigator.start();
 
-},{"./Catalog.js":202,"./router.js":206,"react":200,"react-dom":31}],206:[function(require,module,exports){
+},{"./Catalog.js":202,"./router.js":207,"react":200,"react-dom":31}],207:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21906,4 +21954,4 @@ exports.default = function () {
     return stateNavigator;
 };
 
-},{"navigation":29}]},{},[205]);
+},{"navigation":29}]},{},[206]);
