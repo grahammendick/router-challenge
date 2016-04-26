@@ -21754,7 +21754,7 @@ var Info = function Info() {
         _react2.default.createElement(
             "a",
             { href: "https://github.com/grahammendick/router-challenge/tree/master/examples/navigation" },
-            "Example Source"
+            "Challenge Source"
         ),
         _react2.default.createElement(
             "p",
