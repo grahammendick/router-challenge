@@ -21755,7 +21755,7 @@ var Info = function Info() {
         _react2.default.createElement(
             "p",
             null,
-            "\"Other JavaScript routers have got it all back to front. They want you to configure your routes before you even know what data you're passing. With the Navigation router, you can delay your route configuration until after your application's up and running.\""
+            "Other JavaScript routers have got it all back to front. They want you to configure your routes before you even know what data you're passing. With the Navigation router, you can delay your route configuration until after your application's up and running."
         )
     );
 };
