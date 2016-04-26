@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './Search.js';
 import Albums from './Albums.js';
 import Tracks from './Tracks.js';
+import Info from './Info.js';
 
 const Catalog = ({albums, search, album, side, stateNavigator}) => (
     <div id="catalog">
@@ -11,11 +12,11 @@ const Catalog = ({albums, search, album, side, stateNavigator}) => (
             search={search}
             stateNavigator={stateNavigator}
         />
-        <Tracks
+        {album ? <Tracks
             album={album}
             side={side}
             stateNavigator={stateNavigator}
-        />
+        /> : <Info />}
     </div>
 )
 export default Catalog;

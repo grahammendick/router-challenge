@@ -21689,6 +21689,10 @@ var _Tracks = require('./Tracks.js');
 
 var _Tracks2 = _interopRequireDefault(_Tracks);
 
+var _Info = require('./Info.js');
+
+var _Info2 = _interopRequireDefault(_Info);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Catalog = function Catalog(_ref) {
@@ -21706,16 +21710,16 @@ var Catalog = function Catalog(_ref) {
             search: search,
             stateNavigator: stateNavigator
         }),
-        _react2.default.createElement(_Tracks2.default, {
+        album ? _react2.default.createElement(_Tracks2.default, {
             album: album,
             side: side,
             stateNavigator: stateNavigator
-        })
+        }) : _react2.default.createElement(_Info2.default, null)
     );
 };
 exports.default = Catalog;
 
-},{"./Albums.js":201,"./Search.js":204,"./Tracks.js":205,"react":200}],203:[function(require,module,exports){
+},{"./Albums.js":201,"./Info.js":203,"./Search.js":204,"./Tracks.js":205,"react":200}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21824,10 +21828,6 @@ var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTran
 
 var _navigationReact = require('navigation-react');
 
-var _Info = require('./Info.js');
-
-var _Info2 = _interopRequireDefault(_Info);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tracks = function Tracks(_ref) {
@@ -21835,9 +21835,6 @@ var Tracks = function Tracks(_ref) {
     var side = _ref.side;
     var stateNavigator = _ref.stateNavigator;
 
-    if (!album) {
-        return _react2.default.createElement(_Info2.default, null);
-    }
     var flipped = stateNavigator.stateContext.oldData.slug === album.slug;
     return _react2.default.createElement(
         'div',
@@ -21890,7 +21887,7 @@ var Tracks = function Tracks(_ref) {
 };
 exports.default = Tracks;
 
-},{"./Info.js":203,"navigation-react":7,"react":200,"react-addons-css-transition-group":30}],206:[function(require,module,exports){
+},{"navigation-react":7,"react":200,"react-addons-css-transition-group":30}],206:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
