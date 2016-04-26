@@ -104,17 +104,22 @@ h2{
     clear:both;
     padding:0;
     list-style:none;
-    background-color:rgb(170, 170, 170);
+    background-color:rgb(24, 24, 24);
     margin:5px 5% 0 0;
     width:100%;
     transition:all .2s ease-in-out;
+    height:380px;
 }
 #tracks ol li{
     padding:8px 7%;
     background-color:rgb(24, 24, 24);
     margin:1px 0;
+    border-top:1px solid rgb(170, 170, 170);
     color:#fff;
     font-size:11pt;
+}
+#tracks ol li:last-child{
+    border-bottom:1px solid rgb(170, 170, 170);
 }
 #tracks a{
     text-transform:uppercase;
