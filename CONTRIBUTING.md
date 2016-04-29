@@ -103,7 +103,6 @@ Animate the track list to indicate when changing between sides of a given album.
 ### Filtering Albums
 On entering text in the search box:
 * Filter the album list by doing a case insensitive match against the album's title or band
-* Don't change the selected album, if any, even if it's filtered out of the album list
 * Add the search text to the query string of all Hyperlinks, e.g., /hunky-dory?search=bowie
 * Convert occurrences of space to + in the query string, e.g., /hunky-dory?search=david+bowie
 * Create a browser history record, but only after 1 second of inactivity to avoid cluttering up the history on every key press
