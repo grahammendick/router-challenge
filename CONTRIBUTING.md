@@ -23,7 +23,7 @@ The only npm package dependencies you should have are the three React packages (
 ```
 There are no such limitations on your devDependencies, although the simpler the better. Running the command `npm run build` should build your source into a single JavaScript file named `catalog.js` inside the `dist` folder (avoid minification to aid in-browser debugging). 
 
-Your SPA should be runnable by opening up `index.html`, without requiring any build step. That means you should check in `catalog.js` and that the contents of `index.html` should be as shown below. The [catalog.css] and [albums.js] files are shared across all examples.
+Your SPA should be runnable by opening up `index.html`, without requiring any build step. That means you should check in `catalog.js` and that the contents of `index.html` should be as shown below. The [catalog.css](catalog.css) and [albums.js](albums.js) files are shared across all examples.
 ```
 <html>
   <head>
@@ -37,7 +37,7 @@ Your SPA should be runnable by opening up `index.html`, without requiring any bu
 </html>
 ```
 ## HTML
-Keep within the following HTML bounds because the ids and class names point to styles in the the shared [catalog.css] file.
+Keep within the following HTML bounds because the ids and class names point to styles in the the shared [catalog.css](catalog.css) file.
 
 ```
 <div id="catalog">
@@ -72,7 +72,7 @@ Keep within the following HTML bounds because the ids and class names point to s
 </div>
 ```
 ## Functionality
-The shared [albums.js] file adds the array of albums as a global variable called `ALBUMS`. Each album in the array has a title, slug, band, side1 and side2 properties, for example:
+The shared [albums.js](albums.js) file adds the array of albums as a global variable called `ALBUMS`. Each album in the array has a title, slug, band, side1 and side2 properties, for example:
 ```
 {
   title:'Hunky Dory',
