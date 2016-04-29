@@ -1,5 +1,5 @@
 # Taking the Router Challenge
-If you want to show what your favourite Router can do then you've come to the right place. The Challenge involves using your Router to implement a Music Catalog SPA in React. You can see the SPA in action using the [reference implementation] I built with my [Navigation router]. This example together with the following guidelines should be enough to get you up and running, but if you have any questions don't hesitate to [get in touch].
+If you want to show what your favourite Router can do then you've come to the right place. The Challenge involves using your Router to implement a Music Catalog SPA in React. You can see the SPA in action using the [reference implementation] I built with my [Navigation router](http://grahammendick.github.io/navigation/). This example together with the following guidelines should be enough to get you up and running, but if you have any questions don't hesitate to [get in touch](../../issues).
 
 ## Structure
 Create a folder in the `examples` directory named after the npm package of your Router, e.g., `examples/your-router`. The contents of this folder should look like:
