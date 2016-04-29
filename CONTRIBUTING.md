@@ -7,7 +7,6 @@ Create a folder in the `examples` directory named after the npm package of your 
 dist/
 └── catalog.js
 src/
-.gitignore
 index.html
 package.json
 ```
