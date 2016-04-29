@@ -1,0 +1,142 @@
+body{
+    background-color:rgb(40, 40, 40);
+    font-family:sans-serif;
+}
+.hidden{
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+#catalog{
+    width:900px;
+    height:520px;
+    margin:0 auto;
+    background-color:rgb(24, 24, 24);
+    margin-top:30px;
+}
+#search,#albums{
+    width:60%;
+    float:left;
+}
+#albums{
+    clear:left;
+}
+#tracks{
+    width:40%;
+    float:right;
+    position:relative;
+    top:-40px;
+    left:-1%;
+    overflow:hidden;
+    height:485px;
+}
+#search{
+    text-align:center;
+    padding:12px 0;
+}
+#search input{
+    font-family:sans-serif;
+    border-radius:15px;
+    border:none;
+    height:25px;
+    padding-left:10px;
+}
+#albums ul{
+    padding:0;
+    list-style:none;
+    width:90%;
+    margin:0 auto;
+    overflow-y:scroll;
+    height:445px;
+}
+#albums ul::-webkit-scrollbar{
+    width:8px;
+}
+#albums ul::-webkit-scrollbar-thumb{
+    border-radius:4px;
+    background:#373737;
+}
+#albums li{
+    float:left;
+    width:30%;
+    margin:1.5%;
+    padding:2% 0;
+    text-align:center;
+    background-color:rgb(40, 40, 40);
+}
+#albums li a{
+    display:block;
+    color:rgb(170, 170, 170);
+    text-decoration:none;
+    font-size:10pt;
+}
+#albums li a img{
+    display:block;
+    margin:0 auto;
+    padding-bottom:7px;
+}
+h1{
+    color:rgb(170, 170, 170);
+    font-size:25pt;
+    font-weight:normal;
+    text-align:center;
+    margin:15px 0 0 0;
+}
+h2{
+    color:rgb(170, 170, 170);
+    font-size:14pt;
+    font-weight:normal;
+    margin:3px 0;
+    text-align:center;
+    padding-bottom: 5px;
+}
+#tracks p{
+    margin:10px;
+    text-align:justify;
+    color:#fff;
+    line-height:15pt;
+}
+#tracks ol{
+    position:absolute;
+    clear:both;
+    padding:0;
+    list-style:none;
+    background-color:rgb(24, 24, 24);
+    margin:5px 5% 0 0;
+    width:100%;
+    transition:all .2s ease-in-out;
+    height:380px;
+}
+#tracks ol li{
+    padding:8px 7%;
+    background-color:rgb(24, 24, 24);
+    margin:1px 0;
+    border-top:1px solid rgb(170, 170, 170);
+    color:#fff;
+    font-size:11pt;
+}
+#tracks ol li:last-child{
+    border-bottom:1px solid rgb(170, 170, 170);
+}
+#tracks a{
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:rgb(170, 170, 170);
+    font-size:11pt;
+    padding-right:5%;
+}
+#tracks a.selected{
+    color:rgb(30, 215, 96);
+}
+.flip-leave.flip-leave-active{
+    transform:translate(100%, 0);
+}
+.flip-leave, .flip-enter.flip-enter-active{
+    transform:translate(0, 0);
+}
+.flip-enter{
+    transform:translate(-100%, 0);
+}
