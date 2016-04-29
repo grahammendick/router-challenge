@@ -1,3 +1,4 @@
 examples/*/*
-!examples/navigation/index.html
-!examples/navigation/dist
+!examples/*/index.html
+!examples/*/dist
+
