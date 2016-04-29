@@ -10,7 +10,27 @@ body{
     height:1px;
     overflow:hidden;
 }
-#catalog{
+#challenge{
+    padding:20px 10%;
+    box-sizing: border-box;
+}
+#challenge p,#challenge div,#challenge div a{
+    color:rgb(170, 170, 170);
+    text-align:justify;
+    font-size:inherit;
+}
+#challenge ul{
+    list-style:none;
+    height:240px;
+}
+#challenge div{
+    float:right;
+}
+#challenge a{
+    color:#fff;
+    font-size:18pt;
+}
+#catalog,#challenge{
     width:900px;
     height:520px;
     margin:0 auto;
@@ -78,7 +98,7 @@ body{
     margin:0 auto;
     padding-bottom:7px;
 }
-h1{
+h1,#challenge h1 a{
     color:rgb(170, 170, 170);
     font-size:25pt;
     font-weight:normal;
