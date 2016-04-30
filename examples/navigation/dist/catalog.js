@@ -21802,6 +21802,7 @@ var Search = function Search(_ref) {
         _react2.default.createElement('input', {
             id: 'field',
             placeholder: 'Search',
+            autoFocus: true,
             value: search,
             onChange: function onChange(e) {
                 var data = { search: e.target.value };
