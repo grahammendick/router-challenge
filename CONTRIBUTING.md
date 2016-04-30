@@ -87,7 +87,7 @@ When the page loads display the list of albums along with information about your
 An album is selected by activating a Hyperlink from the album list. The Hyperlink must have its href populated so it's keyboard accessible and can be opened in a new tab. Set the album's slug as the route parameter, e.g., /hunky-dory. On selecting an album:
 * Display the tracks from the first side of the selected album
 * Assign the "selected" class name to the "SIDE 1" Hyperlink
-* Create a new browser history record
+* Create a new browser history record if changing albums. Replace the existing browser history record if changing sides
 * Set the document title to {album.title}, {album.band}, e.g., Hunky Dory, David Bowie
 
 ### Selecting a Side
