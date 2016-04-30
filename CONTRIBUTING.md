@@ -81,7 +81,7 @@ The shared [albums.js](albums.js) file adds the array of albums as a global vari
   side2: ['Fill Your Heart','Andy Warhol','Song for Bob Dylan','Queen Bitch','The Bewlay Brothers']
 }
 ```
-When the page loads display the list of albums along with information about your router and set the document title to "Catalog".
+When the page loads display the list of albums along with information about your router and set the focus to the search box and the document title to "Catalog".
 
 ### Selecting an Album
 An album is selected by activating a Hyperlink from the album list. The Hyperlink must have its href populated so it's keyboard accessible and can be opened in a new tab. Set the album's slug as the route parameter, e.g., /hunky-dory. On selecting an album:
