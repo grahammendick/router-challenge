@@ -94,7 +94,7 @@ An album is selected by activating a Hyperlink from the album list. The Hyperlin
 A side is selected by activating either the "SIDE 1" or "SIDE 2" Hyperlink. The Hyperlink must have its href populated so it's keyboard accessible and can be opened in a new tab. The Url to select the second side is {slug}/side/2, e.g., /hunky-dory/side/2. Side 1 is the default value and must not appear in the Url. On selecting a side:
 * Display the tracks from the selected side
 * Assign the "selected" class name to the Hyperlink of the selected side
-* Replace the existing browser history record
+* Replace the existing browser history record if changing sides
 
 ### Flipping Sides
 Animate the track list to indicate when changing between sides of a given album. Use the `ReactCSSTransitionGroup` with a `transitionName` of "flip" to perform the animation. The animation must run regardless of what triggered the flip, e.g., re-selecting the album from the list can flip sides, as can navigating through browser history. The animation must not run if either the side doesn't change and/or the album does change.
