@@ -13,6 +13,7 @@ const Search = ({search, stateNavigator}) => {
             <input
                 id="field"
                 placeholder="Search"
+                autoFocus={true}
                 value={search}
                 onChange={e => {
                     var data = {search: e.target.value};
