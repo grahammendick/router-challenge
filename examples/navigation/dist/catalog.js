@@ -21621,6 +21621,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Albums = function Albums(_ref) {
     var albums = _ref.albums;
     var search = _ref.search;
+    var slug = _ref.slug;
     var stateNavigator = _ref.stateNavigator;
 
     if (search) {
@@ -21643,6 +21644,7 @@ var Albums = function Albums(_ref) {
                         {
                             navigationData: { slug: album.slug, side: '' },
                             includeCurrentData: true,
+                            historyAction: album.slug === slug ? 'replace' : 'add',
                             stateNavigator: stateNavigator },
                         _react2.default.createElement('img', {
                             src: '../../sleeves/' + album.slug + '.jpg',
@@ -21708,6 +21710,7 @@ var Catalog = function Catalog(_ref) {
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             search: search,
+            slug: album ? album.slug : null,
             stateNavigator: stateNavigator
         }),
         album ? _react2.default.createElement(_Tracks2.default, {
@@ -21753,7 +21756,7 @@ var Info = function Info() {
         ),
         _react2.default.createElement(
             "a",
-            { href: "https://github.com/grahammendick/router-challenge/\r\ntree/master/examples/navigation" },
+            { href: "https://github.com/grahammendick/router-challenge/tree/master/examples/navigation" },
             "Challenge Source"
         ),
         _react2.default.createElement(

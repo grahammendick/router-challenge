@@ -10,6 +10,7 @@ const Catalog = ({albums, search, album, side, stateNavigator}) => (
         <Albums
             albums={albums}
             search={search}
+            slug={album ? album.slug : null}
             stateNavigator={stateNavigator}
         />
         {album ? <Tracks
