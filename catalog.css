@@ -146,7 +146,7 @@ h2{
     letter-spacing:1px;
     color:rgb(170, 170, 170);
     font-size:11pt;
-    padding-right:5%;
+    margin-right:5%;
 }
 #tracks a.selected{
     color:rgb(30, 215, 96);
