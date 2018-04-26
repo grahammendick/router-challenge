@@ -22762,8 +22762,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Albums = function Albums(_ref) {
     var albums = _ref.albums,
         search = _ref.search,
-        slug = _ref.slug,
-        stateNavigator = _ref.stateNavigator;
+        slug = _ref.slug;
 
     if (search) {
         albums = albums.filter(function (album) {
@@ -22785,8 +22784,7 @@ var Albums = function Albums(_ref) {
                         {
                             navigationData: { slug: album.slug, side: '' },
                             includeCurrentData: true,
-                            historyAction: album.slug === slug ? 'replace' : 'add',
-                            stateNavigator: stateNavigator },
+                            historyAction: album.slug === slug ? 'replace' : 'add' },
                         _react2.default.createElement('img', {
                             src: '../../sleeves/' + album.slug + '.jpg',
                             alt: album.title
@@ -22851,8 +22849,7 @@ var Catalog = function Catalog(_ref) {
         _react2.default.createElement(_Albums2.default, {
             albums: albums,
             search: search,
-            slug: album ? album.slug : null,
-            stateNavigator: stateNavigator
+            slug: album ? album.slug : null
         }),
         album ? _react2.default.createElement(_Tracks2.default, {
             album: album,
@@ -22927,11 +22924,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Search = function Search(_ref) {
     var search = _ref.search,
         stateNavigator = _ref.stateNavigator;
-
-    clearTimeout(stateNavigator.states.catalog.timeout);
-    stateNavigator.states.catalog.timeout = setTimeout(function () {
-        stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
-    }, 1000);
     return _react2.default.createElement(
         'div',
         { id: 'search' },
@@ -22947,8 +22939,7 @@ var Search = function Search(_ref) {
             value: search,
             onChange: function onChange(e) {
                 var data = { search: e.target.value };
-                var stateContext = stateNavigator.stateContext;
-                data = stateContext.includeCurrentData(data);
+                data = stateNavigator.stateContext.includeCurrentData(data);
                 stateNavigator.refresh(data, 'none');
             }
         })
@@ -23043,6 +23034,8 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _navigationReact = require('navigation-react');
+
 var _Catalog = require('./Catalog.js');
 
 var _Catalog2 = _interopRequireDefault(_Catalog);
@@ -23054,26 +23047,51 @@ var _router2 = _interopRequireDefault(_router);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var stateNavigator = (0, _router2.default)();
+var catalog = stateNavigator.states.catalog;
 
-stateNavigator.states.catalog.navigated = function (data) {
-    var album = ALBUMS.filter(function (album) {
-        return album.slug === data.slug;
-    })[0];
-    _reactDom2.default.render(_react2.default.createElement(_Catalog2.default, {
+
+catalog.renderView = function (data, stateNavigator) {
+    return _react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
         search: data.search || '',
-        album: album,
+        album: ALBUMS.filter(function (album) {
+            return album.slug === data.slug;
+        })[0],
         side: data.side,
         stateNavigator: stateNavigator
-    }), document.getElementById('catalog'));
-    if (album) {
-        stateNavigator.stateContext.title = album.title + ', ' + album.band;
-    }
+    });
 };
+
+/*
+    if (album) {
+        stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
+    }
+
+    clearTimeout(stateNavigator.states.catalog.timeout);
+    stateNavigator.states.catalog.timeout = setTimeout(() => {
+        stateNavigator.historyManager
+            .addHistory(stateNavigator.stateContext.url);
+    }, 1000);
+*/
 
 stateNavigator.start();
 
-},{"./Catalog.js":74,"./router.js":79,"react":71,"react-dom":63}],79:[function(require,module,exports){
+_reactDom2.default.render(_react2.default.createElement(
+    _navigationReact.NavigationHandler,
+    { stateNavigator: stateNavigator },
+    _react2.default.createElement(
+        _navigationReact.NavigationContext.Consumer,
+        null,
+        function (_ref) {
+            var state = _ref.state,
+                data = _ref.data,
+                stateNavigator = _ref.stateNavigator;
+            return state.renderView(data, stateNavigator);
+        }
+    )
+), document.getElementById('catalog'));
+
+},{"./Catalog.js":74,"./router.js":79,"navigation-react":30,"react":71,"react-dom":63}],79:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

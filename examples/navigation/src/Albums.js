@@ -1,7 +1,7 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-const Albums = ({albums, search, slug, stateNavigator}) => {
+const Albums = ({albums, search, slug}) => {
     if (search) {
         albums = albums.filter(album => 
             album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -15,8 +15,7 @@ const Albums = ({albums, search, slug, stateNavigator}) => {
                     <RefreshLink
                         navigationData={{slug: album.slug, side: ''}}
                         includeCurrentData={true}
-                        historyAction={album.slug === slug ? 'replace' : 'add'}
-                        stateNavigator={stateNavigator}>
+                        historyAction={album.slug === slug ? 'replace' : 'add'}>
                         <img
                             src={`../../sleeves/${album.slug}.jpg`}
                             alt={album.title}
