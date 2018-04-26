@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "navigation": "^2.0.0",
-    "navigation-react": "^2.0.0",
-    "react": "^15.0.1",
+    "navigation": "^5.0.1",
+    "navigation-react": "^3.1.0",
+    "react": "^16.3.2",
     "react-addons-css-transition-group": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
