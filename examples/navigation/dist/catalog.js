@@ -22775,29 +22775,32 @@ var Albums = function Albums(_ref) {
         _react2.default.createElement(
             'ul',
             null,
-            filteredAlbums.map(function (album) {
+            filteredAlbums.map(function (_ref3) {
+                var albumSlug = _ref3.slug,
+                    title = _ref3.title,
+                    band = _ref3.band;
                 return _react2.default.createElement(
                     'li',
-                    { key: album.slug },
+                    { key: albumSlug },
                     _react2.default.createElement(
                         _navigationReact.RefreshLink,
                         {
-                            navigationData: { slug: album.slug, side: '' },
+                            navigationData: { slug: albumSlug, side: '' },
                             includeCurrentData: true,
-                            historyAction: album.slug === slug ? 'replace' : 'add' },
+                            historyAction: albumSlug === slug ? 'replace' : 'add' },
                         _react2.default.createElement('img', {
-                            src: '../../sleeves/' + album.slug + '.jpg',
-                            alt: album.title
+                            src: '../../sleeves/' + albumSlug + '.jpg',
+                            alt: title
                         }),
                         _react2.default.createElement(
                             'div',
                             null,
-                            album.title
+                            title
                         ),
                         _react2.default.createElement(
                             'div',
                             null,
-                            album.band
+                            band
                         )
                     )
                 );

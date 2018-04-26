@@ -9,18 +9,18 @@ const Albums = ({albums, search, slug}) => {
     return (
         <div id="albums">
             <ul>
-            {filteredAlbums.map(album => 
-                <li key={album.slug}>
+            {filteredAlbums.map(({slug: albumSlug, title, band}) => 
+                <li key={albumSlug}>
                     <RefreshLink
-                        navigationData={{slug: album.slug, side: ''}}
+                        navigationData={{slug: albumSlug, side: ''}}
                         includeCurrentData={true}
-                        historyAction={album.slug === slug ? 'replace' : 'add'}>
+                        historyAction={albumSlug === slug ? 'replace' : 'add'}>
                         <img
-                            src={`../../sleeves/${album.slug}.jpg`}
-                            alt={album.title}
+                            src={`../../sleeves/${albumSlug}.jpg`}
+                            alt={title}
                         />
-                        <div>{album.title}</div>
-                        <div>{album.band}</div>
+                        <div>{title}</div>
+                        <div>{band}</div>
                     </RefreshLink>
                 </li>
             )}
