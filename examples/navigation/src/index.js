@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {NavigationHandler, NavigationContext} from 'navigation-react';
 import Catalog from './Catalog.js';
-import createStateNavigator from './router.js';
+import createRouter from './createRouter.js';
 
-const stateNavigator = createStateNavigator();
+const stateNavigator = createRouter();
 var {catalog} = stateNavigator.states;
 
 catalog.renderView = (data, stateNavigator) => (

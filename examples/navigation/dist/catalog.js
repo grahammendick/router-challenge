@@ -23026,6 +23026,29 @@ exports.default = Tracks;
 },{"navigation-react":30,"react":71,"react-addons-css-transition-group":60}],78:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _navigation = require('navigation');
+
+exports.default = function () {
+    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}', title: 'Catalog',
+        defaults: { side: '1' }, trackTypes: false }]);
+    stateNavigator.states.catalog.urlEncode = function (state, key, val) {
+        val = encodeURIComponent(val);
+        return key !== 'search' ? val : val.replace(/%20/g, '+');
+    };
+    stateNavigator.states.catalog.urlDecode = function (state, key, val) {
+        val = key !== 'search' ? val : val.replace(/\+/g, '%20');
+        return decodeURIComponent(val);
+    };
+    return stateNavigator;
+};
+
+},{"navigation":52}],79:[function(require,module,exports){
+'use strict';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -23040,13 +23063,13 @@ var _Catalog = require('./Catalog.js');
 
 var _Catalog2 = _interopRequireDefault(_Catalog);
 
-var _router = require('./router.js');
+var _createRouter = require('./createRouter.js');
 
-var _router2 = _interopRequireDefault(_router);
+var _createRouter2 = _interopRequireDefault(_createRouter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stateNavigator = (0, _router2.default)();
+var stateNavigator = (0, _createRouter2.default)();
 var catalog = stateNavigator.states.catalog;
 
 
@@ -23093,27 +23116,4 @@ _reactDom2.default.render(_react2.default.createElement(
     )
 ), document.getElementById('catalog'));
 
-},{"./Catalog.js":74,"./router.js":79,"navigation-react":30,"react":71,"react-dom":63}],79:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _navigation = require('navigation');
-
-exports.default = function () {
-    var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}', title: 'Catalog',
-        defaults: { side: '1' }, trackTypes: false }]);
-    stateNavigator.states.catalog.urlEncode = function (state, key, val) {
-        val = encodeURIComponent(val);
-        return key !== 'search' ? val : val.replace(/%20/g, '+');
-    };
-    stateNavigator.states.catalog.urlDecode = function (state, key, val) {
-        val = key !== 'search' ? val : val.replace(/\+/g, '%20');
-        return decodeURIComponent(val);
-    };
-    return stateNavigator;
-};
-
-},{"navigation":52}]},{},[78]);
+},{"./Catalog.js":74,"./createRouter.js":78,"navigation-react":30,"react":71,"react-dom":63}]},{},[79]);
