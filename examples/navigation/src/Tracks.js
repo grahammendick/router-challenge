@@ -2,8 +2,8 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {RefreshLink} from 'navigation-react';
 
-const Tracks = ({album, side, stateNavigator}) => {
-    const flipped = stateNavigator.stateContext.oldData.slug === album.slug;
+const Tracks = ({album, side, oldSlug}) => {
+    const flipped = oldSlug === album.slug;
     return (
         <div id="tracks">
             <h1>{album.title}</h1>
@@ -14,8 +14,7 @@ const Tracks = ({album, side, stateNavigator}) => {
                     navigationData={{side: side}}
                     includeCurrentData={true}
                     historyAction="replace"
-                    activeCssClass="selected"
-                    stateNavigator={stateNavigator}>
+                    activeCssClass="selected">
                     Side {side}
                 </RefreshLink>
             )}

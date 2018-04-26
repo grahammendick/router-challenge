@@ -22854,7 +22854,7 @@ var Catalog = function Catalog(_ref) {
         album ? _react2.default.createElement(_Tracks2.default, {
             album: album,
             side: side,
-            stateNavigator: stateNavigator
+            oldSlug: stateNavigator.stateContext.oldData.slug
         }) : _react2.default.createElement(_Info2.default, null)
     );
 };
@@ -22969,9 +22969,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Tracks = function Tracks(_ref) {
     var album = _ref.album,
         side = _ref.side,
-        stateNavigator = _ref.stateNavigator;
+        oldSlug = _ref.oldSlug;
 
-    var flipped = stateNavigator.stateContext.oldData.slug === album.slug;
+    var flipped = oldSlug === album.slug;
     return _react2.default.createElement(
         'div',
         { id: 'tracks' },
@@ -22993,8 +22993,7 @@ var Tracks = function Tracks(_ref) {
                     navigationData: { side: side },
                     includeCurrentData: true,
                     historyAction: 'replace',
-                    activeCssClass: 'selected',
-                    stateNavigator: stateNavigator },
+                    activeCssClass: 'selected' },
                 'Side ',
                 side
             );

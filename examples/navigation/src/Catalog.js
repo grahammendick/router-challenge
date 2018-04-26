@@ -15,7 +15,7 @@ const Catalog = ({albums, search, album, side, stateNavigator}) => (
         {album ? <Tracks
             album={album}
             side={side}
-            stateNavigator={stateNavigator}
+            oldSlug={stateNavigator.stateContext.oldData.slug}
         /> : <Info />}
     </div>
 )
