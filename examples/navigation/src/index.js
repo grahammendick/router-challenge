@@ -35,7 +35,9 @@ stateNavigator.start();
 ReactDOM.render(
     <NavigationHandler stateNavigator={stateNavigator}>
         <NavigationContext.Consumer>
-            {({state, data, stateNavigator}) => state.renderView(data, stateNavigator)}
+            {({state, data, stateNavigator}) => (
+                state.renderView(data, stateNavigator
+            ))}
         </NavigationContext.Consumer>
     </NavigationHandler>,
     document.getElementById('catalog')
