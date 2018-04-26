@@ -22970,8 +22970,6 @@ var Tracks = function Tracks(_ref) {
     var album = _ref.album,
         side = _ref.side,
         oldSlug = _ref.oldSlug;
-
-    var flipped = oldSlug === album.slug;
     return _react2.default.createElement(
         'div',
         { id: 'tracks' },
@@ -23002,8 +23000,8 @@ var Tracks = function Tracks(_ref) {
             _reactAddonsCssTransitionGroup2.default,
             {
                 transitionName: 'flip',
-                transitionEnter: flipped,
-                transitionLeave: flipped,
+                transitionEnter: oldSlug === album.slug,
+                transitionLeave: oldSlug === album.slug,
                 transitionEnterTimeout: 300,
                 transitionLeaveTimeout: 300 },
             _react2.default.createElement(
