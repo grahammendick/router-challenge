@@ -17,23 +17,20 @@ catalog.renderView = (data, stateNavigator) => (
     />
 );
 
-/*
-    if (album) {
-        stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
-    }
-
-*/
-
-stateNavigator.start();
-
 var timeout;
-stateNavigator.onNavigate(() => {
+stateNavigator.onNavigate((oldState, state, data) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
         stateNavigator.historyManager
             .addHistory(stateNavigator.stateContext.url);
-    }, 1000);    
+    }, 1000);
+    var album = ALBUMS.filter(album => album.slug === data.slug)[0];
+    if (album) {
+        stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
+    }
 });
+
+stateNavigator.start();
 
 ReactDOM.render(
     <NavigationHandler stateNavigator={stateNavigator}>

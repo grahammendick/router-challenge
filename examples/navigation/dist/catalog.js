@@ -23062,22 +23062,21 @@ catalog.renderView = function (data, stateNavigator) {
     });
 };
 
-/*
-    if (album) {
-        stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
-    }
-
-*/
-
-stateNavigator.start();
-
 var timeout;
-stateNavigator.onNavigate(function () {
+stateNavigator.onNavigate(function (oldState, state, data) {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
         stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
     }, 1000);
+    var album = ALBUMS.filter(function (album) {
+        return album.slug === data.slug;
+    })[0];
+    if (album) {
+        stateNavigator.stateContext.title = album.title + ', ' + album.band;
+    }
 });
+
+stateNavigator.start();
 
 _reactDom2.default.render(_react2.default.createElement(
     _navigationReact.NavigationHandler,
