@@ -11,7 +11,7 @@ index.html
 package.json
 ```
 ## Build and Run
-The only npm package dependencies you should have are the three React packages (the addons package is needed for the animation) and your Router package. If your Router consists of multiple packages then you can include them all but, as a guide, don't include any packages that aren't listed on your Router's download documentation page.
+The only npm package dependencies you should have are the three React packages (the addons package is needed for the animation) and your Router package. If your Router consists of multiple packages then you can include them all but, as a guide, don't include any packages that aren't listed as a peer dependency of your Router.
 ```
 "dependencies": {
   "react": "^15.0.1",
