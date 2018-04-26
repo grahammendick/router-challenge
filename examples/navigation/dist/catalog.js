@@ -23030,23 +23030,51 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _navigation = require('navigation');
+
+var _Catalog = require('./Catalog.js');
+
+var _Catalog2 = _interopRequireDefault(_Catalog);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
     var stateNavigator = new _navigation.StateNavigator([{ key: 'catalog', route: '{slug?}+/side/{side}', title: 'Catalog',
         defaults: { side: '1' }, trackTypes: false }]);
-    stateNavigator.states.catalog.urlEncode = function (state, key, val) {
+    var catalog = stateNavigator.states.catalog;
+
+
+    catalog.urlEncode = function (state, key, val) {
         val = encodeURIComponent(val);
         return key !== 'search' ? val : val.replace(/%20/g, '+');
     };
-    stateNavigator.states.catalog.urlDecode = function (state, key, val) {
+    catalog.urlDecode = function (state, key, val) {
         val = key !== 'search' ? val : val.replace(/\+/g, '%20');
         return decodeURIComponent(val);
+    };
+
+    catalog.renderView = function (_ref, stateNavigator) {
+        var search = _ref.search,
+            slug = _ref.slug,
+            side = _ref.side;
+        return _react2.default.createElement(_Catalog2.default, {
+            albums: ALBUMS,
+            search: search || '',
+            album: ALBUMS.filter(function (album) {
+                return album.slug === slug;
+            })[0],
+            side: side,
+            stateNavigator: stateNavigator
+        });
     };
     return stateNavigator;
 };
 
-},{"navigation":52}],79:[function(require,module,exports){
+},{"./Catalog.js":74,"navigation":52,"react":71}],79:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -23059,10 +23087,6 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _navigationReact = require('navigation-react');
 
-var _Catalog = require('./Catalog.js');
-
-var _Catalog2 = _interopRequireDefault(_Catalog);
-
 var _createRouter = require('./createRouter.js');
 
 var _createRouter2 = _interopRequireDefault(_createRouter);
@@ -23070,23 +23094,6 @@ var _createRouter2 = _interopRequireDefault(_createRouter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var stateNavigator = (0, _createRouter2.default)();
-var catalog = stateNavigator.states.catalog;
-
-
-catalog.renderView = function (_ref, stateNavigator) {
-    var search = _ref.search,
-        slug = _ref.slug,
-        side = _ref.side;
-    return _react2.default.createElement(_Catalog2.default, {
-        albums: ALBUMS,
-        search: search || '',
-        album: ALBUMS.filter(function (album) {
-            return album.slug === slug;
-        })[0],
-        side: side,
-        stateNavigator: stateNavigator
-    });
-};
 
 var timeout;
 stateNavigator.onNavigate(function (oldState, state, data) {
@@ -23110,13 +23117,13 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(
         _navigationReact.NavigationContext.Consumer,
         null,
-        function (_ref2) {
-            var state = _ref2.state,
-                data = _ref2.data,
-                stateNavigator = _ref2.stateNavigator;
+        function (_ref) {
+            var state = _ref.state,
+                data = _ref.data,
+                stateNavigator = _ref.stateNavigator;
             return state.renderView(data, stateNavigator);
         }
     )
 ), document.getElementById('catalog'));
 
-},{"./Catalog.js":74,"./createRouter.js":78,"navigation-react":30,"react":71,"react-dom":63}]},{},[79]);
+},{"./createRouter.js":78,"navigation-react":30,"react":71,"react-dom":63}]},{},[79]);
