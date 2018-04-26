@@ -7,12 +7,12 @@ import createRouter from './createRouter.js';
 const stateNavigator = createRouter();
 var {catalog} = stateNavigator.states;
 
-catalog.renderView = (data, stateNavigator) => (
+catalog.renderView = ({search, slug, side}, stateNavigator) => (
     <Catalog
         albums={ALBUMS}
-        search={data.search || ''}
-        album={ALBUMS.filter(album => album.slug === data.slug)[0]}
-        side={data.side}
+        search={search || ''}
+        album={ALBUMS.filter(album => album.slug === slug)[0]}
+        side={side}
         stateNavigator={stateNavigator}
     />
 );

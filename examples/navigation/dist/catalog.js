@@ -23073,14 +23073,17 @@ var stateNavigator = (0, _createRouter2.default)();
 var catalog = stateNavigator.states.catalog;
 
 
-catalog.renderView = function (data, stateNavigator) {
+catalog.renderView = function (_ref, stateNavigator) {
+    var search = _ref.search,
+        slug = _ref.slug,
+        side = _ref.side;
     return _react2.default.createElement(_Catalog2.default, {
         albums: ALBUMS,
-        search: data.search || '',
+        search: search || '',
         album: ALBUMS.filter(function (album) {
-            return album.slug === data.slug;
+            return album.slug === slug;
         })[0],
-        side: data.side,
+        side: side,
         stateNavigator: stateNavigator
     });
 };
@@ -23107,10 +23110,10 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(
         _navigationReact.NavigationContext.Consumer,
         null,
-        function (_ref) {
-            var state = _ref.state,
-                data = _ref.data,
-                stateNavigator = _ref.stateNavigator;
+        function (_ref2) {
+            var state = _ref2.state,
+                data = _ref2.data,
+                stateNavigator = _ref2.stateNavigator;
             return state.renderView(data, stateNavigator);
         }
     )
