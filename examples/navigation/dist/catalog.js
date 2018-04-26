@@ -22764,18 +22764,18 @@ var Albums = function Albums(_ref) {
         search = _ref.search,
         slug = _ref.slug;
 
-    if (search) {
-        albums = albums.filter(function (album) {
-            return album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || album.band.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-        });
-    }
+    var filteredAlbums = albums.filter(function (_ref2) {
+        var title = _ref2.title,
+            band = _ref2.band;
+        return !search || title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || band.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    });
     return _react2.default.createElement(
         'div',
         { id: 'albums' },
         _react2.default.createElement(
             'ul',
             null,
-            albums.map(function (album) {
+            filteredAlbums.map(function (album) {
                 return _react2.default.createElement(
                     'li',
                     { key: album.slug },
