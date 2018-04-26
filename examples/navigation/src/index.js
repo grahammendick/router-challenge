@@ -22,14 +22,18 @@ catalog.renderView = (data, stateNavigator) => (
         stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
     }
 
-    clearTimeout(stateNavigator.states.catalog.timeout);
-    stateNavigator.states.catalog.timeout = setTimeout(() => {
-        stateNavigator.historyManager
-            .addHistory(stateNavigator.stateContext.url);
-    }, 1000);
 */
 
 stateNavigator.start();
+
+var timeout;
+stateNavigator.onNavigate(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        stateNavigator.historyManager
+            .addHistory(stateNavigator.stateContext.url);
+    }, 1000);    
+});
 
 ReactDOM.render(
     <NavigationHandler stateNavigator={stateNavigator}>

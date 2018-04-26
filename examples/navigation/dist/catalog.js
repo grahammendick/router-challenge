@@ -23067,14 +23067,17 @@ catalog.renderView = function (data, stateNavigator) {
         stateNavigator.stateContext.title = `${album.title}, ${album.band}`;
     }
 
-    clearTimeout(stateNavigator.states.catalog.timeout);
-    stateNavigator.states.catalog.timeout = setTimeout(() => {
-        stateNavigator.historyManager
-            .addHistory(stateNavigator.stateContext.url);
-    }, 1000);
 */
 
 stateNavigator.start();
+
+var timeout;
+stateNavigator.onNavigate(function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+        stateNavigator.historyManager.addHistory(stateNavigator.stateContext.url);
+    }, 1000);
+});
 
 _reactDom2.default.render(_react2.default.createElement(
     _navigationReact.NavigationHandler,
