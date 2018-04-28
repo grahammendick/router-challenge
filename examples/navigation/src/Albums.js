@@ -1,28 +1,26 @@
 import React from 'react';
 import {RefreshLink} from 'navigation-react';
 
-const Albums = ({albums, search, slug, stateNavigator}) => {
-    if (search) {
-        albums = albums.filter(album => 
-            album.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
-            || album.band.toLowerCase().indexOf(search.toLowerCase()) !== -1);
-    }
+const Albums = ({albums, search, slug}) => {
+    var filteredAlbums = albums.filter(({title, band}) => (!search
+        || title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+        || band.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    ));
     return (
         <div id="albums">
             <ul>
-            {albums.map(album => 
-                <li key={album.slug}>
+            {filteredAlbums.map(({slug: albumSlug, title, band}) => 
+                <li key={albumSlug}>
                     <RefreshLink
-                        navigationData={{slug: album.slug, side: ''}}
+                        navigationData={{slug: albumSlug, side: ''}}
                         includeCurrentData={true}
-                        historyAction={album.slug === slug ? 'replace' : 'add'}
-                        stateNavigator={stateNavigator}>
+                        historyAction={albumSlug === slug ? 'replace' : 'add'}>
                         <img
-                            src={`../../sleeves/${album.slug}.jpg`}
-                            alt={album.title}
+                            src={`../../sleeves/${albumSlug}.jpg`}
+                            alt={title}
                         />
-                        <div>{album.title}</div>
-                        <div>{album.band}</div>
+                        <div>{title}</div>
+                        <div>{band}</div>
                     </RefreshLink>
                 </li>
             )}

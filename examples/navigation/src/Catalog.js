@@ -11,12 +11,11 @@ const Catalog = ({albums, search, album, side, stateNavigator}) => (
             albums={albums}
             search={search}
             slug={album ? album.slug : null}
-            stateNavigator={stateNavigator}
         />
         {album ? <Tracks
             album={album}
             side={side}
-            stateNavigator={stateNavigator}
+            oldSlug={stateNavigator.stateContext.oldData.slug}
         /> : <Info />}
     </div>
 )
