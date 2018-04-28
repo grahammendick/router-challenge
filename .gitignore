@@ -1,4 +1,4 @@
 examples/*/*
 !examples/*/index.html
 !examples/*/dist
-
+.DS_store
